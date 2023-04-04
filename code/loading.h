@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <winbase.h>
 #include "hacking.h"
+#include <Lmcons.h>
 #pragma comment(lib, "user32") 
 #pragma comment(lib, "Advapi32")
 #pragma comment(lib, "winmm")
+
+TCHAR username[UNLEN + 1];
+DWORD size = UNLEN + 1;
 
 namespace solver {
 
@@ -572,6 +576,18 @@ namespace solver {
 		}
 	private: System::Void button_resh_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->tim1) {
+			this->button0->Enabled = false;
+			this->button1->Enabled = false;
+			this->button2->Enabled = false;
+			this->button3->Enabled = false;
+			this->button4->Enabled = false;
+			this->button5->Enabled = false;
+			this->button6->Enabled = false;
+			this->button7->Enabled = false;
+			this->button8->Enabled = false;
+			this->button9->Enabled = false;
+			this->button_resh->Enabled = false;
+			this->button_zvd->Enabled = false;
 			this->tim1 = true;
 			this->timer2_2->Start();
 			this->canc_did = true;
@@ -623,8 +639,8 @@ namespace solver {
 		}
 		else if (this->sec == 6) {
 			//9
-			SetCursorPos(1120, 565);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 565, 0, 0);
+			SetCursorPos(1120, 545);
+			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 545, 0, 0);
 			PlaySound(MAKEINTRESOURCE(7), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "9";
 		}
@@ -668,6 +684,7 @@ namespace solver {
 	}
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->start_modem) {
+			GetUserName((TCHAR*)username, &size);
 			PlaySound(MAKEINTRESOURCE(8), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->start_modem = true;
 		}
@@ -707,11 +724,11 @@ namespace solver {
 		this->sec1++;
 	}
 	private: System::Void timer3_2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (this->sexs < 11 && !this->pas_done) {
-			this->log_txt->Text += "*";
+		if (this->sexs < size && !this->pas_done) {
+			this->log_txt->Text += username[sexs];
 			PlaySound(MAKEINTRESOURCE(10), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 		}
-		else if (this->sexs == 11 && !this->pas_done) {
+		else if (this->sexs == size && !this->pas_done) {
 			PlaySound(MAKEINTRESOURCE(12), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->pas_txt->Show();
 			this->pas_done = true;

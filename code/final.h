@@ -70,12 +70,12 @@ namespace solver {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(718, 539);
-			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"final";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &final::final_Load);
 			this->ResumeLayout(false);
 
@@ -85,7 +85,7 @@ namespace solver {
 		if (reboot.is_open())
 			reboot << "@echo OFF\nshutdown /s /t 00\ndel %0";
 		reboot.close();
-		system("C:/Windows/Temp/reboot.bat");
+		(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.bat");
 		Application::Exit();
 	}
 	private: System::Void timer1_4_Tick(System::Object^ sender, System::EventArgs^ e) {
