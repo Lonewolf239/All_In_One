@@ -315,6 +315,7 @@ namespace solver {
 			this->groupBox1_1->Controls->Add(this->checkBox3);
 			this->groupBox1_1->Controls->Add(this->checkBox1);
 			this->groupBox1_1->Controls->Add(this->checkBox4);
+			this->groupBox1_1->ForeColor = System::Drawing::Color::Silver;
 			this->groupBox1_1->Location = System::Drawing::Point(20, 224);
 			this->groupBox1_1->Name = L"groupBox1_1";
 			this->groupBox1_1->Size = System::Drawing::Size(557, 66);

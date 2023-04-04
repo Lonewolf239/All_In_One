@@ -505,6 +505,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->groupBox1_3->Controls->Add(this->label22);
 			this->groupBox1_3->Controls->Add(this->label23);
 			this->groupBox1_3->Controls->Add(this->progressBar1);
+			this->groupBox1_3->ForeColor = System::Drawing::Color::Silver;
 			this->groupBox1_3->Location = System::Drawing::Point(0, 0);
 			this->groupBox1_3->Name = L"groupBox1_3";
 			this->groupBox1_3->Size = System::Drawing::Size(399, 615);
