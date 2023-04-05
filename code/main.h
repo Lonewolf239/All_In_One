@@ -53,7 +53,6 @@ namespace solver {
 	private: System::Windows::Forms::Label^ icon_prog1;
 	private: System::Windows::Forms::GroupBox^ groupBox1_1;
 	private: System::Windows::Forms::Label^ quest_btn;
-
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -413,8 +412,11 @@ namespace solver {
 		propysk4 = !propysk4;
 	}
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		_form1 = gcnew developer;
-		_form1->Show();
+		if (!_form1_opened) {
+			_form1 = gcnew developer;
+			_form1->Show();
+			_form1_opened = true;
+		}
 	}
 	private: System::Void label1_MouseEnter_1(System::Object^ sender, System::EventArgs^ e) {
 		this->quest_btn->BackColor = System::Drawing::Color::LightGray;

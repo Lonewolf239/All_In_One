@@ -211,6 +211,7 @@ namespace solver {
 		(gcnew System::Diagnostics::Process())->Start("https://vk.com/1blitz01");
 	}
 	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		_form1_opened = false;
 		this->exit_right = true;
 		this->Close();
 	}
