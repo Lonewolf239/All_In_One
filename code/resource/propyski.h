@@ -1,1 +1,0 @@
-extern bool propysk1 = false, propysk2 = false, propysk3 = false, propysk4 = false;

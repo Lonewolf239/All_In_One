@@ -206,6 +206,8 @@ private: System::Windows::Forms::Label^ done4;
 private: System::Windows::Forms::Label^ done3;
 private: System::Windows::Forms::Label^ done2;
 private: System::Windows::Forms::Label^ done1;
+private: System::Windows::Forms::Label^ ostalos_text;
+
 
 	private: bool Start = false;
 
@@ -345,6 +347,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->timer25 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer26 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer_wait = (gcnew System::Windows::Forms::Timer(this->components));
+			this->ostalos_text = (gcnew System::Windows::Forms::Label());
 			this->panel1_3->SuspendLayout();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
@@ -358,7 +361,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->stop_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->stop_btn->ForeColor = System::Drawing::Color::Black;
-			this->stop_btn->Location = System::Drawing::Point(309, 258);
+			this->stop_btn->Location = System::Drawing::Point(308, 277);
 			this->stop_btn->Name = L"stop_btn";
 			this->stop_btn->Size = System::Drawing::Size(120, 60);
 			this->stop_btn->TabIndex = 9;
@@ -1398,7 +1401,8 @@ private: System::Windows::Forms::Label^ done1;
 			// 
 			// main_progres
 			// 
-			this->main_progres->Location = System::Drawing::Point(12, 222);
+			this->main_progres->BackColor = System::Drawing::Color::White;
+			this->main_progres->Location = System::Drawing::Point(12, 242);
 			this->main_progres->MarqueeAnimationSpeed = 10000;
 			this->main_progres->Maximum = 25;
 			this->main_progres->Name = L"main_progres";
@@ -1419,7 +1423,7 @@ private: System::Windows::Forms::Label^ done1;
 			// 
 			this->orig2_3->Controls->Add(this->orig1_3);
 			this->orig2_3->Controls->Add(this->orig_3);
-			this->orig2_3->Location = System::Drawing::Point(12, 258);
+			this->orig2_3->Location = System::Drawing::Point(12, 277);
 			this->orig2_3->Name = L"orig2_3";
 			this->orig2_3->Size = System::Drawing::Size(290, 60);
 			this->orig2_3->TabIndex = 12;
@@ -1547,13 +1551,29 @@ private: System::Windows::Forms::Label^ done1;
 			this->timer_wait->Interval = 500;
 			this->timer_wait->Tick += gcnew System::EventHandler(this, &hacking::timer_wait_Tick);
 			// 
+			// ostalos_text
+			// 
+			this->ostalos_text->AutoSize = true;
+			this->ostalos_text->BackColor = System::Drawing::Color::Transparent;
+			this->ostalos_text->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->ostalos_text->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ostalos_text->ForeColor = System::Drawing::Color::White;
+			this->ostalos_text->Location = System::Drawing::Point(12, 219);
+			this->ostalos_text->Name = L"ostalos_text";
+			this->ostalos_text->Size = System::Drawing::Size(164, 20);
+			this->ostalos_text->TabIndex = 17;
+			this->ostalos_text->Text = L"Выполнено: 0 из 25";
+			this->ostalos_text->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// hacking
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(135)), static_cast<System::Int32>(static_cast<System::Byte>(135)),
 				static_cast<System::Int32>(static_cast<System::Byte>(135)));
-			this->ClientSize = System::Drawing::Size(440, 325);
+			this->ClientSize = System::Drawing::Size(440, 346);
+			this->Controls->Add(this->ostalos_text);
 			this->Controls->Add(this->orig2_3);
 			this->Controls->Add(this->main_progres);
 			this->Controls->Add(this->panel2_3);
@@ -1575,6 +1595,7 @@ private: System::Windows::Forms::Label^ done1;
 			this->orig2_3->ResumeLayout(false);
 			this->orig2_3->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 	private: System::Void start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1831,6 +1852,7 @@ private: System::Windows::Forms::Label^ done1;
 	}
 	private: System::Void timer_wait_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->proces++;
+		this->ostalos_text->Text = "Выполнено: " + this->main_progres->Value + " из 25";
 		switch (this->proces) {
 		case 1:
 			this->done1->Show();

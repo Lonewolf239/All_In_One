@@ -81,11 +81,15 @@ namespace solver {
 
 		}
 	private: System::Void final_Click() {
-		std::ofstream reboot("C:/Windows/Temp/reboot.bat");
+		std::ofstream reboot("C:\\Windows\\Temp\\reboot.bat");
 		if (reboot.is_open())
-			reboot << "@echo OFF\nshutdown /s /t 00\ndel %0";
+			reboot << "@echo OFF\nshutdown /s /t 00\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
 		reboot.close();
-		(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.bat");
+		std::ofstream reboot1("C:\\Windows\\Temp\\reboot.vbs");
+		if (reboot1.is_open())
+			reboot1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\Windows\\Temp\\reboot.bat\", 0";
+		reboot1.close();
+		(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.vbs");
 		Application::Exit();
 	}
 	private: System::Void timer1_4_Tick(System::Object^ sender, System::EventArgs^ e) {

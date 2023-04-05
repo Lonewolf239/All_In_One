@@ -1,4 +1,5 @@
 #include "loading.h"
+#include "developer.h"
 
 namespace solver {
 
@@ -48,15 +49,20 @@ namespace solver {
 
 
 	private: loading^ _form;
+	private: developer^ _form1;
 	private: System::Windows::Forms::Label^ icon_prog1;
 	private: System::Windows::Forms::GroupBox^ groupBox1_1;
+	private: System::Windows::Forms::Label^ quest_btn;
+
+	private: System::ComponentModel::IContainer^ components;
+
 
 
 
 	protected:
 
 	private:
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -67,6 +73,7 @@ namespace solver {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(main::typeid));
 			this->panel1_1 = (gcnew System::Windows::Forms::Panel());
+			this->quest_btn = (gcnew System::Windows::Forms::Label());
 			this->icon_prog1 = (gcnew System::Windows::Forms::Label());
 			this->hide_btn = (gcnew System::Windows::Forms::Label());
 			this->exit_btn = (gcnew System::Windows::Forms::Label());
@@ -92,6 +99,7 @@ namespace solver {
 			// panel1_1
 			// 
 			this->panel1_1->BackColor = System::Drawing::Color::Black;
+			this->panel1_1->Controls->Add(this->quest_btn);
 			this->panel1_1->Controls->Add(this->icon_prog1);
 			this->panel1_1->Controls->Add(this->hide_btn);
 			this->panel1_1->Controls->Add(this->exit_btn);
@@ -100,6 +108,24 @@ namespace solver {
 			this->panel1_1->Name = L"panel1_1";
 			this->panel1_1->Size = System::Drawing::Size(590, 30);
 			this->panel1_1->TabIndex = 0;
+			// 
+			// quest_btn
+			// 
+			this->quest_btn->BackColor = System::Drawing::Color::Black;
+			this->quest_btn->Cursor = System::Windows::Forms::Cursors::Arrow;
+			this->quest_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->quest_btn->ForeColor = System::Drawing::Color::Silver;
+			this->quest_btn->Location = System::Drawing::Point(500, 0);
+			this->quest_btn->Name = L"quest_btn";
+			this->quest_btn->Size = System::Drawing::Size(30, 30);
+			this->quest_btn->TabIndex = 4;
+			this->quest_btn->Text = L"\?";
+			this->quest_btn->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->quest_btn->Click += gcnew System::EventHandler(this, &main::label1_Click_1);
+			this->quest_btn->MouseEnter += gcnew System::EventHandler(this, &main::label1_MouseEnter_1);
+			this->quest_btn->MouseLeave += gcnew System::EventHandler(this, &main::label1_MouseLeave);
+			this->quest_btn->MouseHover += gcnew System::EventHandler(this, &main::quest_btn_MouseHover);
 			// 
 			// icon_prog1
 			// 
@@ -142,7 +168,7 @@ namespace solver {
 			// 
 			// name_prog1
 			// 
-			this->name_prog1->Cursor = System::Windows::Forms::Cursors::Help;
+			this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->name_prog1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->name_prog1->ForeColor = System::Drawing::Color::White;
@@ -151,8 +177,6 @@ namespace solver {
 			this->name_prog1->Size = System::Drawing::Size(340, 30);
 			this->name_prog1->TabIndex = 0;
 			this->name_prog1->Text = L"Программа \"Всё В Одном\"";
-			this->name_prog1->Click += gcnew System::EventHandler(this, &main::label1_Click);
-			this->name_prog1->MouseEnter += gcnew System::EventHandler(this, &main::label1_MouseEnter);
 			// 
 			// panel2_1
 			// 
@@ -189,7 +213,7 @@ namespace solver {
 			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->checkBox1->ForeColor = System::Drawing::Color::White;
-			this->checkBox1->Location = System::Drawing::Point(4, 11);
+			this->checkBox1->Location = System::Drawing::Point(10, 11);
 			this->checkBox1->Name = L"checkBox1";
 			this->checkBox1->Size = System::Drawing::Size(303, 24);
 			this->checkBox1->TabIndex = 6;
@@ -207,7 +231,7 @@ namespace solver {
 			this->checkBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->checkBox3->ForeColor = System::Drawing::Color::White;
-			this->checkBox3->Location = System::Drawing::Point(302, 11);
+			this->checkBox3->Location = System::Drawing::Point(315, 11);
 			this->checkBox3->Name = L"checkBox3";
 			this->checkBox3->Size = System::Drawing::Size(228, 24);
 			this->checkBox3->TabIndex = 7;
@@ -224,9 +248,9 @@ namespace solver {
 			this->checkBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->checkBox4->ForeColor = System::Drawing::Color::White;
-			this->checkBox4->Location = System::Drawing::Point(302, 35);
+			this->checkBox4->Location = System::Drawing::Point(315, 35);
 			this->checkBox4->Name = L"checkBox4";
-			this->checkBox4->Size = System::Drawing::Size(253, 24);
+			this->checkBox4->Size = System::Drawing::Size(230, 24);
 			this->checkBox4->TabIndex = 8;
 			this->checkBox4->Text = L"Обновить Windows";
 			this->checkBox4->UseVisualStyleBackColor = false;
@@ -242,7 +266,7 @@ namespace solver {
 			this->checkBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->checkBox2->ForeColor = System::Drawing::Color::White;
-			this->checkBox2->Location = System::Drawing::Point(4, 35);
+			this->checkBox2->Location = System::Drawing::Point(10, 35);
 			this->checkBox2->Name = L"checkBox2";
 			this->checkBox2->Size = System::Drawing::Size(255, 24);
 			this->checkBox2->TabIndex = 5;
@@ -368,18 +392,13 @@ namespace solver {
 	private: System::Void hide_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		this->hide_btn->BackColor = System::Drawing::Color::Black;
 	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-		(gcnew System::Diagnostics::Process())->Start("https://t.me/+VLJzjVRg8ElkZWYy");
-	}
 	private: System::Void start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		_form = gcnew loading;
 		_form->Show();
+		if (_form1)
+			_form1->Close();
 		this->ShowInTaskbar = false;
 		this->Enabled = false;
-	}
-	private: System::Void label1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		ToolTip^ t = gcnew ToolTip();
-		t->SetToolTip(name_prog1, "Открыть Telegram Разработчика");
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		propysk1 = !propysk1;
@@ -392,6 +411,20 @@ namespace solver {
 	}
 	private: System::Void checkBox4_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		propysk4 = !propysk4;
+	}
+	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		_form1 = gcnew developer;
+		_form1->Show();
+	}
+	private: System::Void label1_MouseEnter_1(System::Object^ sender, System::EventArgs^ e) {
+		this->quest_btn->BackColor = System::Drawing::Color::LightGray;
+	}
+	private: System::Void label1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->quest_btn->BackColor = System::Drawing::Color::Black;
+	}
+	private: System::Void quest_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		ToolTip^ g = gcnew ToolTip();
+		g->SetToolTip(quest_btn, "О Разработчике");
 	}
 };
 }
