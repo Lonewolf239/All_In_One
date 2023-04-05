@@ -1842,12 +1842,12 @@ private: System::Windows::Forms::Label^ ostalos_text;
 	private: System::Void timer26_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->main_progres->Value == 25) {
 			this->timer26->Stop();
-			PlaySound(nullptr, nullptr, 0);
 			_form3 = gcnew final;
+			PlaySound(nullptr, nullptr, 0);
+			hacking::Hide();
 			_form3->Show();
 			this->now_hacking = false;
 			this->ShowInTaskbar = false;
-			hacking::Hide();
 		}
 	}
 	private: System::Void timer_wait_Tick(System::Object^ sender, System::EventArgs^ e) {
