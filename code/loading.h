@@ -59,6 +59,9 @@ namespace solver {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
 	private: hacking^ _form1;
+	private:int screenW, screenH;
+	private: int x1, y1, x2, y2, x3, y3, x6, y6, x8, y8, x9, y9, x0, y0, xresh, yresh;
+	private: bool other = false;
 
 
 
@@ -596,86 +599,129 @@ namespace solver {
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->sec == 0) {
 			//1
-			BlockInput(true);
-			SetCursorPos(1040, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1040, 465, 0, 0);
+			if (!this->other) {
+				BlockInput(true);
+				SetCursorPos(x1, y1);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(1), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "+1 (";
 		}
 		else if (this->sec == 1) {
 			//8
-			SetCursorPos(1080, 545);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 545, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x8, y8);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x8, y8, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(3), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "8";
 		}
 		else if (this->sec == 2) {
 			//0
-			SetCursorPos(1080, 590);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 590, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x0, y0);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x0, y0, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(4), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "0";
 		}
 		else if (this->sec == 3) {
 			//0
-			SetCursorPos(1080, 590);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 590, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x0, y0);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x0, y0, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(4), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "0) ";
 		}
 		else if (this->sec == 4) {
 			//3
-			SetCursorPos(1120, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 465, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x3, y3);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x3, y3, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(2), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "3";
 		}
 		else if (this->sec == 5) {
 			//2
-			SetCursorPos(1080, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 465, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x2, y2);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
 		else if (this->sec == 6) {
 			//9
-			SetCursorPos(1120, 545);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 545, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x9, y9);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x9, y9, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(7), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "9";
 		}
 		else if (this->sec == 7) {
 			//2
-			SetCursorPos(1080, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 465, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x2, y2);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
 		else if (this->sec == 8) {
 			//3
-			SetCursorPos(1120, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 465, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x3, y3);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x3, y3, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(2), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "3";
 		}
 		else if (this->sec == 9) {
 			//2
-			SetCursorPos(1080, 465);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1080, 465, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x2, y2);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
 		else if (this->sec == 10) {
 			//6
-			SetCursorPos(1120, 505);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 505, 0, 0);
+			if (!this->other) {
+				SetCursorPos(x6, y6);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x6, y6, 0, 0);
+			}
 			PlaySound(MAKEINTRESOURCE(6), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "6";
 		}
 		else if (this->sec == 11) {
 			//#
-			SetCursorPos(1120, 590);
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 1120, 590, 0, 0);
+			if (!this->other) {
+				SetCursorPos(xresh, yresh);
+				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, xresh, yresh, 0, 0);
+			}
+			else {
+				if (!this->tim1) {
+					this->button0->Enabled = false;
+					this->button1->Enabled = false;
+					this->button2->Enabled = false;
+					this->button3->Enabled = false;
+					this->button4->Enabled = false;
+					this->button5->Enabled = false;
+					this->button6->Enabled = false;
+					this->button7->Enabled = false;
+					this->button8->Enabled = false;
+					this->button9->Enabled = false;
+					this->button_resh->Enabled = false;
+					this->button_zvd->Enabled = false;
+					this->tim1 = true;
+					this->timer2_2->Start();
+					this->canc_did = true;
+				}
+			}
 			PlaySound(MAKEINTRESOURCE(1), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			BlockInput(false);
 			this->timer1_2->Stop();
@@ -818,6 +864,101 @@ namespace solver {
 	}
 	private: System::Void loading_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->tim) {
+			this->screenW = GetSystemMetrics(SM_CYSCREEN);
+			this->screenH = GetSystemMetrics(SM_CXSCREEN);
+			if (screenH == 1920 && screenW == 1080) { //1920x1080
+				x1 = 1040;
+				y1 = 465;
+				x2 = 1080;
+				y2 = 465;
+				x3 = 1120;
+				y3 = 465;
+				x6 = 1120;
+				y6 = 505;
+				x8 = 1080;
+				y8 = 545;
+				x9 = 1120;
+				y9 = 545;
+				x0 = 1080;
+				y0 = 590;
+				xresh = 1120;
+				yresh = 590;
+			}
+			/*else if (screenH == 1440 && screenW == 900) { //1440x900
+				x1 = 720;
+				y1 = 435;
+				x2 = 760;
+				y2 = 435;
+				x3 = 800;
+				y3 = 435;
+				x6 = 800;
+				y6 = 475;
+				x8 = 760;
+				y8 = 520;
+				x9 = 800;
+				y9 = 520;
+				x0 = 760;
+				y0 = 560;
+				xresh = 800;
+				yresh = 560;
+			}*/
+			else if (screenH == 1280 && screenW == 1024) { //1280x1024
+				x1 = 720;
+				y1 = 435;
+				x2 = 760;
+				y2 = 435;
+				x3 = 800;
+				y3 = 435;
+				x6 = 800;
+				y6 = 475;
+				x8 = 760;
+				y8 = 520;
+				x9 = 800;
+				y9 = 520;
+				x0 = 760;
+				y0 = 560;
+				xresh = 800;
+				yresh = 560;
+			}
+			else if (screenH == 1280 && screenW == 720) { //1280x720
+				x1 = 720;
+				y1 = 285;
+				x2 = 760;
+				y2 = 285;
+				x3 = 800;
+				y3 = 285;
+				x6 = 800;
+				y6 = 325;
+				x8 = 760;
+				y8 = 365;
+				x9 = 800;
+				y9 = 365;
+				x0 = 760;
+				y0 = 405;
+				xresh = 800;
+				yresh = 405;
+			}
+			else if (screenH == 800 && screenW == 600) { //800x600
+				x1 = 480;
+				y1 = 225;
+				x2 = 520;
+				y2 = 225;
+				x3 = 560;
+				y3 = 225;
+				x6 = 560;
+				y6 = 265;
+				x8 = 520;
+				y8 = 305;
+				x9 = 560;
+				y9 = 305;
+				x0 = 520;
+				y0 = 345;
+				xresh = 560;
+				yresh = 345;
+			}
+			else { //other
+				this->other = true;
+			}
 			this->tim = true;
 			this->timer1_2->Start();
 		}
