@@ -1,5 +1,7 @@
 #include "final.h"
 #include "propyski.h"
+#include "baner.h"
+#include <fstream>
 
 namespace solver {
 
@@ -55,7 +57,7 @@ namespace solver {
 	private: System::Windows::Forms::Label^ orig1_3;
 
 	private: System::Windows::Forms::Label^ prog_icon_3;
-
+	private: int fec = 0;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label24;
@@ -82,7 +84,7 @@ namespace solver {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::GroupBox^ groupBox1_3;
-
+	private:bool final_did = false;
 	private: System::Windows::Forms::ProgressBar^ progressBar1;
 	private: System::Windows::Forms::ProgressBar^ progressBar25;
 	private: int proces = 0;
@@ -109,6 +111,7 @@ namespace solver {
 
 	private: System::Windows::Forms::ProgressBar^ progressBar18;
 	private:final^ _form3;
+	private:baner^ _form4;
 
 	private: System::Windows::Forms::ProgressBar^ progressBar14;
 	private: System::Windows::Forms::ProgressBar^ progressBar17;
@@ -124,6 +127,7 @@ namespace solver {
 
 	private: System::Windows::Forms::ProgressBar^ progressBar9;
 	private: System::Windows::Forms::ProgressBar^ progressBar12;
+		   private: bool cporn = false;
 
 
 
@@ -207,6 +211,9 @@ private: System::Windows::Forms::Label^ done3;
 private: System::Windows::Forms::Label^ done2;
 private: System::Windows::Forms::Label^ done1;
 private: System::Windows::Forms::Label^ ostalos_text;
+private: System::Windows::Forms::Label^ final_label;
+
+
 
 
 	private: bool Start = false;
@@ -236,6 +243,7 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->prog_icon_3 = (gcnew System::Windows::Forms::Label());
 			this->prog_name_3 = (gcnew System::Windows::Forms::Label());
 			this->panel2_3 = (gcnew System::Windows::Forms::Panel());
+			this->final_label = (gcnew System::Windows::Forms::Label());
 			this->groupBox1_3 = (gcnew System::Windows::Forms::GroupBox());
 			this->done23 = (gcnew System::Windows::Forms::Label());
 			this->done24 = (gcnew System::Windows::Forms::Label());
@@ -420,11 +428,28 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			// panel2_3
 			// 
 			this->panel2_3->AutoScroll = true;
+			this->panel2_3->Controls->Add(this->final_label);
 			this->panel2_3->Controls->Add(this->groupBox1_3);
 			this->panel2_3->Location = System::Drawing::Point(12, 36);
 			this->panel2_3->Name = L"panel2_3";
 			this->panel2_3->Size = System::Drawing::Size(416, 180);
 			this->panel2_3->TabIndex = 10;
+			// 
+			// final_label
+			// 
+			this->final_label->AutoSize = true;
+			this->final_label->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->final_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->final_label->ForeColor = System::Drawing::Color::White;
+			this->final_label->Location = System::Drawing::Point(16, 65);
+			this->final_label->Name = L"final_label";
+			this->final_label->Size = System::Drawing::Size(383, 50);
+			this->final_label->TabIndex = 0;
+			this->final_label->Text = L"Процесс завершён успешно!\r\nДобро пожаловать в базу, лошок!";
+			this->final_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->final_label->Visible = false;
 			// 
 			// groupBox1_3
 			// 
@@ -1305,9 +1330,9 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->label19->ForeColor = System::Drawing::Color::White;
 			this->label19->Location = System::Drawing::Point(6, 355);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(257, 18);
+			this->label19->Size = System::Drawing::Size(247, 18);
 			this->label19->TabIndex = 29;
-			this->label19->Text = L"15. Размещение порно-банеров";
+			this->label19->Text = L"15. Размещение порно-банера";
 			// 
 			// label11
 			// 
@@ -1574,10 +1599,10 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(135)), static_cast<System::Int32>(static_cast<System::Byte>(135)),
 				static_cast<System::Int32>(static_cast<System::Byte>(135)));
 			this->ClientSize = System::Drawing::Size(440, 346);
+			this->Controls->Add(this->panel2_3);
 			this->Controls->Add(this->ostalos_text);
 			this->Controls->Add(this->orig2_3);
 			this->Controls->Add(this->main_progres);
-			this->Controls->Add(this->panel2_3);
 			this->Controls->Add(this->panel1_3);
 			this->Controls->Add(this->stop_btn);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -1591,6 +1616,7 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->panel1_3->ResumeLayout(false);
 			this->panel1_3->PerformLayout();
 			this->panel2_3->ResumeLayout(false);
+			this->panel2_3->PerformLayout();
 			this->groupBox1_3->ResumeLayout(false);
 			this->groupBox1_3->PerformLayout();
 			this->orig2_3->ResumeLayout(false);
@@ -1746,7 +1772,7 @@ private: System::Windows::Forms::Label^ ostalos_text;
 
 	}
 	private: System::Void timer15_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar15->Increment(1);
+		this->progressBar15->Increment(4);
 		if (this->progressBar15->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer15->Stop();
@@ -1841,19 +1867,35 @@ private: System::Windows::Forms::Label^ ostalos_text;
 		}
 	}
 	private: System::Void timer26_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (this->main_progres->Value == 25) {
+		if (!this->final_did) {
+			this->panel2_3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->panel2_3->AutoScroll = false;
+			this->groupBox1_3->Hide();
+			this->final_label->Show();
+			this->final_did = true;
+		}
+		if (this->main_progres->Value == 25 && this->fec > 30) {
 			this->timer26->Stop();
 			_form3 = gcnew final;
 			PlaySound(nullptr, nullptr, 0);
 			hacking::Hide();
+			_form4->Hide();
 			_form3->Show();
 			this->now_hacking = false;
 			this->ShowInTaskbar = false;
 		}
+		this->fec++;
 	}
 	private: System::Void timer_wait_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->proces++;
 		this->ostalos_text->Text = "Выполнено: " + this->main_progres->Value + " из 25";
+		if (this->cporn) {
+			CreateDirectory(L"C:\\child_porn", NULL);
+			std::ofstream g("C:\\child_porn\\OPEN_ME.txt");
+			g << "We're no strangers to love\nYou know the rules and so do I(do I)\nA full commitment's what I'm thinking of\nYou wouldn't get this from any other guy\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nWe've known each other for so long\nYour heart's been aching, but you're too shy to say it(say it)\nInside, we both know what's been going on (going on)\nWe know the game and we're gonna play it\nAnd if you ask me how I'm feeling\nDon't tell me you're too blind to see\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nWe've known each other for so long\nYour heart's been aching, but you're too shy to say it(to say it)\nInside, we both know what's been going on (going on)\nWe know the game and we're gonna play it\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you";
+			g.close();
+		}
 		switch (this->proces) {
 		case 1:
 			this->done1->Show();
@@ -1945,6 +1987,8 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->timer_wait->Stop();
 			break;
 		case 15:
+			_form4 = gcnew baner;
+			_form4->Show();
 			this->done15->Show();
 			this->timer16->Start();
 			this->timer_wait->Stop();
@@ -1960,6 +2004,7 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			this->timer_wait->Stop();
 			break;
 		case 18:
+			this->cporn = true;
 			this->done18->Show();
 			this->timer19->Start();
 			this->timer_wait->Stop();

