@@ -406,13 +406,14 @@ private: System::Windows::Forms::Label^ ostalos_text;
 			// 
 			// prog_name_3
 			// 
+			this->prog_name_3->AutoSize = true;
 			this->prog_name_3->Cursor = System::Windows::Forms::Cursors::Default;
 			this->prog_name_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->prog_name_3->ForeColor = System::Drawing::Color::White;
 			this->prog_name_3->Location = System::Drawing::Point(30, 0);
 			this->prog_name_3->Name = L"prog_name_3";
-			this->prog_name_3->Size = System::Drawing::Size(340, 30);
+			this->prog_name_3->Size = System::Drawing::Size(340, 29);
 			this->prog_name_3->TabIndex = 0;
 			this->prog_name_3->Text = L"Программа \"Всё В Одном\"";
 			// 

@@ -24,7 +24,7 @@ namespace solver {
 	private: System::Windows::Forms::Panel^ panel1_1;
 	protected:
 
-	private: System::Windows::Forms::Label^ name_prog1;
+
 
 	private: System::Windows::Forms::Label^ exit_btn;
 	private: System::Windows::Forms::Label^ hide_btn;
@@ -53,6 +53,7 @@ namespace solver {
 	private: System::Windows::Forms::Label^ icon_prog1;
 	private: System::Windows::Forms::GroupBox^ groupBox1_1;
 	private: System::Windows::Forms::Label^ quest_btn;
+	private: System::Windows::Forms::Label^ name_prog1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -167,13 +168,14 @@ namespace solver {
 			// 
 			// name_prog1
 			// 
+			this->name_prog1->AutoSize = true;
 			this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->name_prog1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->name_prog1->ForeColor = System::Drawing::Color::White;
 			this->name_prog1->Location = System::Drawing::Point(30, 0);
 			this->name_prog1->Name = L"name_prog1";
-			this->name_prog1->Size = System::Drawing::Size(340, 30);
+			this->name_prog1->Size = System::Drawing::Size(340, 29);
 			this->name_prog1->TabIndex = 0;
 			this->name_prog1->Text = L"Программа \"Всё В Одном\"";
 			// 
@@ -365,6 +367,7 @@ namespace solver {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
 			this->panel1_1->ResumeLayout(false);
+			this->panel1_1->PerformLayout();
 			this->panel2_1->ResumeLayout(false);
 			this->orig2->ResumeLayout(false);
 			this->orig2->PerformLayout();

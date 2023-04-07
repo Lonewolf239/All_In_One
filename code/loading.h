@@ -485,13 +485,14 @@ namespace solver {
 			// 
 			// label2_2
 			// 
+			this->label2_2->AutoSize = true;
 			this->label2_2->Cursor = System::Windows::Forms::Cursors::Default;
 			this->label2_2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label2_2->ForeColor = System::Drawing::Color::White;
 			this->label2_2->Location = System::Drawing::Point(20, 0);
 			this->label2_2->Name = L"label2_2";
-			this->label2_2->Size = System::Drawing::Size(200, 20);
+			this->label2_2->Size = System::Drawing::Size(199, 16);
 			this->label2_2->TabIndex = 12;
 			this->label2_2->Text = L"Программа \"Всё В Одном\"";
 			// 
@@ -574,6 +575,7 @@ namespace solver {
 			this->panel3_2->ResumeLayout(false);
 			this->panel3_2->PerformLayout();
 			this->panel4_2->ResumeLayout(false);
+			this->panel4_2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -884,24 +886,24 @@ namespace solver {
 				xresh = 1120;
 				yresh = 590;
 			}
-			/*else if (screenH == 1440 && screenW == 900) { //1440x900
-				x1 = 720;
-				y1 = 435;
-				x2 = 760;
-				y2 = 435;
-				x3 = 800;
-				y3 = 435;
-				x6 = 800;
-				y6 = 475;
-				x8 = 760;
-				y8 = 520;
-				x9 = 800;
-				y9 = 520;
-				x0 = 760;
-				y0 = 560;
-				xresh = 800;
-				yresh = 560;
-			}*/
+			else if (screenH == 1440 && screenW == 900) { //1440x900
+				x1 = 800;
+				y1 = 375;
+				x2 = 840;
+				y2 = 375;
+				x3 = 880;
+				y3 = 375;
+				x6 = 880;
+				y6 = 415;
+				x8 = 840;
+				y8 = 455;
+				x9 = 880;
+				y9 = 455;
+				x0 = 840;
+				y0 = 495;
+				xresh = 880;
+				yresh = 495;
+			}
 			else if (screenH == 1280 && screenW == 1024) { //1280x1024
 				x1 = 720;
 				y1 = 435;

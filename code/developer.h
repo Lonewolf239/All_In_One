@@ -99,15 +99,16 @@ namespace solver {
 			   // 
 			   // name_prog1
 			   // 
+			   this->name_prog1->AutoSize = true;
 			   this->name_prog1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(115)), static_cast<System::Int32>(static_cast<System::Byte>(115)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(115)));
 			   this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 			   this->name_prog1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->name_prog1->ForeColor = System::Drawing::Color::White;
-			   this->name_prog1->Location = System::Drawing::Point(0, 0);
+			   this->name_prog1->Location = System::Drawing::Point(0, 4);
 			   this->name_prog1->Name = L"name_prog1";
-			   this->name_prog1->Size = System::Drawing::Size(150, 30);
+			   this->name_prog1->Size = System::Drawing::Size(142, 18);
 			   this->name_prog1->TabIndex = 0;
 			   this->name_prog1->Text = L"О Разработчике:";
 			   this->name_prog1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -194,6 +195,7 @@ namespace solver {
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &developer::developer_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &developer::developer_Load);
 			   this->panel1_1->ResumeLayout(false);
+			   this->panel1_1->PerformLayout();
 			   this->ResumeLayout(false);
 
 		   }
