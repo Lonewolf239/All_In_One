@@ -9,6 +9,7 @@
 
 TCHAR username[UNLEN + 1];
 DWORD size = UNLEN + 1;
+POINT p;
 
 namespace solver {
 
@@ -601,10 +602,15 @@ namespace solver {
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->sec == 0) {
 			//1
+			BlockInput(true);
 			if (!this->other) {
-				BlockInput(true);
 				SetCursorPos(x1, y1);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+			}
+			else {
+				GetCursorPos(&p);
+				SetCursorPos(900000, 900000);
+				this->button1->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(1), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "+1 (";
@@ -615,6 +621,10 @@ namespace solver {
 				SetCursorPos(x8, y8);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x8, y8, 0, 0);
 			}
+			else {
+				this->button1->Size = System::Drawing::Size(35, 35);
+				this->button8->Size = System::Drawing::Size(37, 37);
+			}
 			PlaySound(MAKEINTRESOURCE(3), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "8";
 		}
@@ -623,6 +633,10 @@ namespace solver {
 			if (!this->other) {
 				SetCursorPos(x0, y0);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x0, y0, 0, 0);
+			}
+			else {
+				this->button8->Size = System::Drawing::Size(35, 35);
+				this->button0->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(4), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "0";
@@ -633,6 +647,10 @@ namespace solver {
 				SetCursorPos(x0, y0);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x0, y0, 0, 0);
 			}
+			else {
+				this->button0->Size = System::Drawing::Size(35, 35);
+				this->button0->Size = System::Drawing::Size(37, 37);
+			}
 			PlaySound(MAKEINTRESOURCE(4), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "0) ";
 		}
@@ -641,6 +659,10 @@ namespace solver {
 			if (!this->other) {
 				SetCursorPos(x3, y3);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x3, y3, 0, 0);
+			}
+			else {
+				this->button0->Size = System::Drawing::Size(35, 35);
+				this->button3->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(2), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "3";
@@ -651,6 +673,10 @@ namespace solver {
 				SetCursorPos(x2, y2);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
 			}
+			else {
+				this->button3->Size = System::Drawing::Size(35, 35);
+				this->button2->Size = System::Drawing::Size(37, 37);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
@@ -659,6 +685,10 @@ namespace solver {
 			if (!this->other) {
 				SetCursorPos(x9, y9);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x9, y9, 0, 0);
+			}
+			else {
+				this->button2->Size = System::Drawing::Size(35, 35);
+				this->button9->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(7), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "9";
@@ -669,6 +699,10 @@ namespace solver {
 				SetCursorPos(x2, y2);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
 			}
+			else {
+				this->button9->Size = System::Drawing::Size(35, 35);
+				this->button2->Size = System::Drawing::Size(37, 37);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
@@ -677,6 +711,10 @@ namespace solver {
 			if (!this->other) {
 				SetCursorPos(x3, y3);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x3, y3, 0, 0);
+			}
+			else {
+				this->button2->Size = System::Drawing::Size(35, 35);
+				this->button3->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(2), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "3";
@@ -687,6 +725,10 @@ namespace solver {
 				SetCursorPos(x2, y2);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
 			}
+			else {
+				this->button3->Size = System::Drawing::Size(35, 35);
+				this->button2->Size = System::Drawing::Size(37, 37);
+			}
 			PlaySound(MAKEINTRESOURCE(5), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "2";
 		}
@@ -695,6 +737,10 @@ namespace solver {
 			if (!this->other) {
 				SetCursorPos(x6, y6);
 				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, x6, y6, 0, 0);
+			}
+			else {
+				this->button2->Size = System::Drawing::Size(35, 35);
+				this->button6->Size = System::Drawing::Size(37, 37);
 			}
 			PlaySound(MAKEINTRESOURCE(6), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			this->number->Text += "6";
@@ -707,6 +753,7 @@ namespace solver {
 			}
 			else {
 				if (!this->tim1) {
+					this->button6->Size = System::Drawing::Size(35, 35);
 					this->button0->Enabled = false;
 					this->button1->Enabled = false;
 					this->button2->Enabled = false;
@@ -722,6 +769,7 @@ namespace solver {
 					this->tim1 = true;
 					this->timer2_2->Start();
 					this->canc_did = true;
+					SetCursorPos(p.x, p.y);
 				}
 			}
 			PlaySound(MAKEINTRESOURCE(1), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
