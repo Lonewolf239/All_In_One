@@ -39,6 +39,7 @@ namespace solver {
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::ComponentModel::IContainer^ components;
 	private: int stat = 0, num = 0;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: bool loading = true;
 	private:
 		/// <summary>
@@ -57,18 +58,20 @@ namespace solver {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(baner::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 72, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label1->Location = System::Drawing::Point(0, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(896, 108);
+			this->label1->Size = System::Drawing::Size(428, 55);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Загрузка баннера |";
+			this->label1->Text = L"Загрузка баннера";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label1->UseWaitCursor = true;
 			// 
@@ -77,13 +80,25 @@ namespace solver {
 			this->timer1->Interval = 500;
 			this->timer1->Tick += gcnew System::EventHandler(this, &baner::timer1_Tick);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(419, 0);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(69, 55);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 1;
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->UseWaitCursor = true;
+			// 
 			// baner
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(896, 108);
+			this->ClientSize = System::Drawing::Size(488, 55);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -96,6 +111,7 @@ namespace solver {
 			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &baner::baner_Load);
 			this->Click += gcnew System::EventHandler(this, &baner::baner_Click);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -105,40 +121,13 @@ namespace solver {
 		this->timer1->Start();
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (this->loading && num < 46) {
-			if (this->stat == 0)
-				this->label1->Text = "Загрузка баннера |";
-			else if (this->stat == 1)
-				this->label1->Text = "Загрузка баннера /";
-			else if (this->stat == 2) {
-				this->ClientSize = System::Drawing::Size(927, 108);
-				this->label1->Text = "Загрузка баннера —";
-			}
-			else if (this->stat == 3) {
-				this->ClientSize = System::Drawing::Size(896, 108);
-				this->label1->Text = "Загрузка баннера \\";
-			}
-			else if (this->stat == 4)
-				this->label1->Text = "Загрузка баннера |";
-			else if (this->stat == 5)
-				this->label1->Text = "Загрузка баннера /";
-			else if (this->stat == 6) {
-				this->ClientSize = System::Drawing::Size(927, 108);
-				this->label1->Text = "Загрузка баннера —";
-			}
-			else if (this->stat == 7) {
-				this->ClientSize = System::Drawing::Size(896, 108);
-				this->label1->Text = "Загрузка баннера \\";
-			}
-			else
-				this->stat = -1;
-		}
-		else {
+		if (this->loading && stat == 46) {
 			this->label1->Hide();
+			this->pictureBox1->Hide();
 			this->ClientSize = System::Drawing::Size(1920, 125);
+			this->timer1->Stop();
 		}
 		this->stat++;
-		this->num++;
 	}
 	private: System::Void baner_Click(System::Object^ sender, System::EventArgs^ e) {
 		(gcnew System::Diagnostics::Process())->Start("https://www.maledigital.com/en/?s=1");
