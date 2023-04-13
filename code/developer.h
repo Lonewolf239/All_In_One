@@ -42,7 +42,7 @@ namespace solver {
 		System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::Panel^ panel1_1;
 	private: System::Windows::Forms::Button^ dis_btn;
-	private: System::Windows::Forms::Button^ vk_btn;
+
 
 	private: System::Windows::Forms::Button^ git_btn;
 	private: System::Windows::Forms::Button^ teg_btn;
@@ -65,7 +65,6 @@ namespace solver {
 			   this->exit_btn = (gcnew System::Windows::Forms::Label());
 			   this->name_prog1 = (gcnew System::Windows::Forms::Label());
 			   this->dis_btn = (gcnew System::Windows::Forms::Button());
-			   this->vk_btn = (gcnew System::Windows::Forms::Button());
 			   this->git_btn = (gcnew System::Windows::Forms::Button());
 			   this->teg_btn = (gcnew System::Windows::Forms::Button());
 			   this->panel1_1->SuspendLayout();
@@ -117,31 +116,16 @@ namespace solver {
 			   // 
 			   this->dis_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
 			   this->dis_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->dis_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->dis_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->dis_btn->ForeColor = System::Drawing::Color::Black;
 			   this->dis_btn->Location = System::Drawing::Point(12, 35);
 			   this->dis_btn->Name = L"dis_btn";
-			   this->dis_btn->Size = System::Drawing::Size(86, 30);
+			   this->dis_btn->Size = System::Drawing::Size(176, 30);
 			   this->dis_btn->TabIndex = 10;
-			   this->dis_btn->Text = L"Хочу прогу";
+			   this->dis_btn->Text = L"Хочу заказать прогу";
 			   this->dis_btn->UseVisualStyleBackColor = false;
 			   this->dis_btn->Click += gcnew System::EventHandler(this, &developer::dis_btn_Click);
-			   // 
-			   // vk_btn
-			   // 
-			   this->vk_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
-			   this->vk_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->vk_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(204)));
-			   this->vk_btn->ForeColor = System::Drawing::Color::Black;
-			   this->vk_btn->Location = System::Drawing::Point(12, 69);
-			   this->vk_btn->Name = L"vk_btn";
-			   this->vk_btn->Size = System::Drawing::Size(86, 30);
-			   this->vk_btn->TabIndex = 11;
-			   this->vk_btn->Text = L"VK";
-			   this->vk_btn->UseVisualStyleBackColor = false;
-			   this->vk_btn->Click += gcnew System::EventHandler(this, &developer::vk_btn_Click);
 			   // 
 			   // git_btn
 			   // 
@@ -150,7 +134,7 @@ namespace solver {
 			   this->git_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->git_btn->ForeColor = System::Drawing::Color::Black;
-			   this->git_btn->Location = System::Drawing::Point(102, 35);
+			   this->git_btn->Location = System::Drawing::Point(12, 69);
 			   this->git_btn->Name = L"git_btn";
 			   this->git_btn->Size = System::Drawing::Size(86, 30);
 			   this->git_btn->TabIndex = 12;
@@ -182,7 +166,6 @@ namespace solver {
 			   this->ClientSize = System::Drawing::Size(200, 104);
 			   this->Controls->Add(this->teg_btn);
 			   this->Controls->Add(this->git_btn);
-			   this->Controls->Add(this->vk_btn);
 			   this->Controls->Add(this->dis_btn);
 			   this->Controls->Add(this->panel1_1);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -206,11 +189,7 @@ namespace solver {
 		(gcnew System::Diagnostics::Process())->Start("https://t.me/+VLJzjVRg8ElkZWYy");
 	}
 	private: System::Void dis_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		PlaySound(MAKEINTRESOURCE(17), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
-		MessageBox::Show("Хочешь чтобы я написал для тебя какую-нибудь прогу? Ок!\nПросто свяжись со мною, опиши что тебе надо, и, я постараюсь это сделать.\nПримерное время выполнение зависит от сложности: Минимум 2 дня разработки\nЦена: От 250 руб. (Только предоплата)", "Прога на заказ", MessageBoxButtons::OK, MessageBoxIcon::Question);
-	}
-	private: System::Void vk_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		(gcnew System::Diagnostics::Process())->Start("https://vk.com/1blitz01");
+		(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_textbot");
 	}
 	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		_form1_opened = false;
