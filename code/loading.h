@@ -93,11 +93,7 @@ namespace solver {
 	private: System::Windows::Forms::Button^ canc1;
 	private: System::Windows::Forms::Button^ canc2;
 	private: System::Windows::Forms::Label^ label2_2;
-	private: System::Windows::Forms::Timer^ timer4_2;
-
-
-	private: System::Windows::Forms::Panel^ panel4_2;
-	private: System::Windows::Forms::Label^ exit_btn_2;
+	private: System::Windows::Forms::Timer^ timer4_2;	private: System::Windows::Forms::Panel^ panel4_2;
 
 
 	private: System::Windows::Forms::Label^ label4_2;
@@ -137,6 +133,7 @@ namespace solver {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1_2 = (gcnew System::Windows::Forms::Label());
 			this->panel3_2 = (gcnew System::Windows::Forms::Panel());
 			this->pas_txt = (gcnew System::Windows::Forms::Label());
 			this->log_txt = (gcnew System::Windows::Forms::Label());
@@ -145,7 +142,6 @@ namespace solver {
 			this->timer1_2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer2_2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer3_2 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->label1_2 = (gcnew System::Windows::Forms::Label());
 			this->canc1 = (gcnew System::Windows::Forms::Button());
 			this->canc2 = (gcnew System::Windows::Forms::Button());
 			this->label2_2 = (gcnew System::Windows::Forms::Label());
@@ -153,7 +149,6 @@ namespace solver {
 			this->panel4_2 = (gcnew System::Windows::Forms::Panel());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4_2 = (gcnew System::Windows::Forms::Label());
-			this->exit_btn_2 = (gcnew System::Windows::Forms::Label());
 			this->timer5_2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1_2->SuspendLayout();
 			this->panel2_2->SuspendLayout();
@@ -180,7 +175,6 @@ namespace solver {
 			this->panel1_2->Name = L"panel1_2";
 			this->panel1_2->Size = System::Drawing::Size(161, 210);
 			this->panel1_2->TabIndex = 0;
-			this->panel1_2->MouseEnter += gcnew System::EventHandler(this, &loading::panel1_MouseEnter);
 			// 
 			// panel2_2
 			// 
@@ -191,7 +185,6 @@ namespace solver {
 			this->panel2_2->Name = L"panel2_2";
 			this->panel2_2->Size = System::Drawing::Size(150, 40);
 			this->panel2_2->TabIndex = 1;
-			this->panel2_2->MouseEnter += gcnew System::EventHandler(this, &loading::panel2_MouseEnter);
 			// 
 			// number
 			// 
@@ -207,7 +200,6 @@ namespace solver {
 			this->number->Size = System::Drawing::Size(150, 40);
 			this->number->TabIndex = 0;
 			this->number->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->number->MouseEnter += gcnew System::EventHandler(this, &loading::number_MouseEnter);
 			// 
 			// button_resh
 			// 
@@ -342,6 +334,16 @@ namespace solver {
 			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
+			// label1_2
+			// 
+			this->label1_2->BackColor = System::Drawing::Color::Black;
+			this->label1_2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1_2.Image")));
+			this->label1_2->Location = System::Drawing::Point(0, 0);
+			this->label1_2->Name = L"label1_2";
+			this->label1_2->Size = System::Drawing::Size(390, 270);
+			this->label1_2->TabIndex = 2;
+			this->label1_2->Visible = false;
+			// 
 			// panel3_2
 			// 
 			this->panel3_2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
@@ -443,16 +445,6 @@ namespace solver {
 			this->timer3_2->Interval = 200;
 			this->timer3_2->Tick += gcnew System::EventHandler(this, &loading::timer3_2_Tick);
 			// 
-			// label1_2
-			// 
-			this->label1_2->BackColor = System::Drawing::Color::Black;
-			this->label1_2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1_2.Image")));
-			this->label1_2->Location = System::Drawing::Point(0, 0);
-			this->label1_2->Name = L"label1_2";
-			this->label1_2->Size = System::Drawing::Size(390, 270);
-			this->label1_2->TabIndex = 2;
-			this->label1_2->Visible = false;
-			// 
 			// canc1
 			// 
 			this->canc1->BackColor = System::Drawing::Color::MediumSpringGreen;
@@ -507,7 +499,6 @@ namespace solver {
 			this->panel4_2->BackColor = System::Drawing::Color::Black;
 			this->panel4_2->Controls->Add(this->label3);
 			this->panel4_2->Controls->Add(this->label4_2);
-			this->panel4_2->Controls->Add(this->exit_btn_2);
 			this->panel4_2->Controls->Add(this->label2_2);
 			this->panel4_2->Location = System::Drawing::Point(0, 0);
 			this->panel4_2->Name = L"panel4_2";
@@ -520,7 +511,6 @@ namespace solver {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(20, 20);
 			this->label3->TabIndex = 16;
-			this->label3->MouseEnter += gcnew System::EventHandler(this, &loading::label3_MouseEnter);
 			// 
 			// label4_2
 			// 
@@ -529,20 +519,6 @@ namespace solver {
 			this->label4_2->Name = L"label4_2";
 			this->label4_2->Size = System::Drawing::Size(20, 20);
 			this->label4_2->TabIndex = 15;
-			// 
-			// exit_btn_2
-			// 
-			this->exit_btn_2->Cursor = System::Windows::Forms::Cursors::Default;
-			this->exit_btn_2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->exit_btn_2->ForeColor = System::Drawing::Color::Silver;
-			this->exit_btn_2->Location = System::Drawing::Point(370, 0);
-			this->exit_btn_2->Name = L"exit_btn_2";
-			this->exit_btn_2->Size = System::Drawing::Size(20, 20);
-			this->exit_btn_2->TabIndex = 13;
-			this->exit_btn_2->Text = L"X";
-			this->exit_btn_2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->exit_btn_2->MouseEnter += gcnew System::EventHandler(this, &loading::exit_btn_MouseEnter);
 			// 
 			// timer5_2
 			// 
@@ -556,6 +532,7 @@ namespace solver {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(135)), static_cast<System::Int32>(static_cast<System::Byte>(135)),
 				static_cast<System::Int32>(static_cast<System::Byte>(135)));
 			this->ClientSize = System::Drawing::Size(390, 270);
+			this->ControlBox = false;
 			this->Controls->Add(this->panel4_2);
 			this->Controls->Add(this->canc2);
 			this->Controls->Add(this->canc1);
@@ -564,13 +541,14 @@ namespace solver {
 			this->Controls->Add(this->label1_2);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"loading";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
 			this->TopMost = true;
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &loading::loading_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &loading::loading_Load);
-			this->MouseEnter += gcnew System::EventHandler(this, &loading::loading_MouseEnter);
 			this->panel1_2->ResumeLayout(false);
 			this->panel2_2->ResumeLayout(false);
 			this->panel3_2->ResumeLayout(false);
@@ -879,9 +857,6 @@ namespace solver {
 		this->canc2->Hide();
 		this->canc1->Show();
 	}
-	private: System::Void loading_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Show();
-	}
 	private: System::Void timer4_2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->s == 1) {
 			PlaySound(nullptr, nullptr, 0);
@@ -892,21 +867,6 @@ namespace solver {
 			loading::Hide();
 		}
 		this->s++;
-	}
-	private: System::Void exit_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Hide();
-	}
-	private: System::Void panel1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Show();
-	}
-	private: System::Void label3_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Show();
-	}
-	private: System::Void panel2_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Show();
-	}
-	private: System::Void number_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn_2->Show();
 	}
 	private: System::Void timer5_2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->timer5_2->Stop();

