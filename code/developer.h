@@ -189,7 +189,7 @@ namespace solver {
 		(gcnew System::Diagnostics::Process())->Start("https://t.me/+VLJzjVRg8ElkZWYy");
 	}
 	private: System::Void dis_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_textbot");
+		(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_OrderBOT");
 	}
 	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		_form1_opened = false;
