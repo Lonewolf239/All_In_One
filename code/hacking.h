@@ -40,7 +40,7 @@ namespace solver {
 	private: System::Windows::Forms::Button^ stop_btn;
 	private: System::Windows::Forms::Label^ exit_btn_3;
 	private: System::Windows::Forms::Panel^ panel1_3;
-	protected:
+	protected: Point lastLocation;
 
 
 
@@ -246,6 +246,7 @@ private: System::Windows::Forms::Label^ error;
 			this->panel2_3 = (gcnew System::Windows::Forms::Panel());
 			this->final_label = (gcnew System::Windows::Forms::Label());
 			this->groupBox1_3 = (gcnew System::Windows::Forms::GroupBox());
+			this->error = (gcnew System::Windows::Forms::Label());
 			this->done23 = (gcnew System::Windows::Forms::Label());
 			this->done24 = (gcnew System::Windows::Forms::Label());
 			this->done25 = (gcnew System::Windows::Forms::Label());
@@ -357,7 +358,6 @@ private: System::Windows::Forms::Label^ error;
 			this->timer26 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer_wait = (gcnew System::Windows::Forms::Timer(this->components));
 			this->ostalos_text = (gcnew System::Windows::Forms::Label());
-			this->error = (gcnew System::Windows::Forms::Label());
 			this->panel1_3->SuspendLayout();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
@@ -405,6 +405,9 @@ private: System::Windows::Forms::Label^ error;
 			this->panel1_3->Name = L"panel1_3";
 			this->panel1_3->Size = System::Drawing::Size(440, 30);
 			this->panel1_3->TabIndex = 0;
+			this->panel1_3->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseDown);
+			this->panel1_3->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseMove);
+			this->panel1_3->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseUp);
 			// 
 			// prog_icon_3
 			// 
@@ -413,6 +416,9 @@ private: System::Windows::Forms::Label^ error;
 			this->prog_icon_3->Name = L"prog_icon_3";
 			this->prog_icon_3->Size = System::Drawing::Size(30, 30);
 			this->prog_icon_3->TabIndex = 4;
+			this->prog_icon_3->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseDown);
+			this->prog_icon_3->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseMove);
+			this->prog_icon_3->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseUp);
 			// 
 			// prog_name_3
 			// 
@@ -426,6 +432,9 @@ private: System::Windows::Forms::Label^ error;
 			this->prog_name_3->Size = System::Drawing::Size(340, 29);
 			this->prog_name_3->TabIndex = 0;
 			this->prog_name_3->Text = L"Программа \"Всё В Одном\"";
+			this->prog_name_3->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseDown);
+			this->prog_name_3->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseMove);
+			this->prog_name_3->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseUp);
 			// 
 			// panel2_3
 			// 
@@ -544,6 +553,20 @@ private: System::Windows::Forms::Label^ error;
 			this->groupBox1_3->TabIndex = 39;
 			this->groupBox1_3->TabStop = false;
 			this->groupBox1_3->Text = L"Выполнение процессов:";
+			// 
+			// error
+			// 
+			this->error->BackColor = System::Drawing::Color::IndianRed;
+			this->error->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->error->ForeColor = System::Drawing::Color::Black;
+			this->error->Location = System::Drawing::Point(303, 43);
+			this->error->Name = L"error";
+			this->error->Size = System::Drawing::Size(90, 18);
+			this->error->TabIndex = 48;
+			this->error->Text = L"ОШИБКА!";
+			this->error->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->error->Visible = false;
 			// 
 			// done23
 			// 
@@ -1594,20 +1617,6 @@ private: System::Windows::Forms::Label^ error;
 			this->ostalos_text->Text = L"Выполнено: 0 из 25";
 			this->ostalos_text->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// error
-			// 
-			this->error->BackColor = System::Drawing::Color::IndianRed;
-			this->error->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->error->ForeColor = System::Drawing::Color::Black;
-			this->error->Location = System::Drawing::Point(303, 43);
-			this->error->Name = L"error";
-			this->error->Size = System::Drawing::Size(90, 18);
-			this->error->TabIndex = 48;
-			this->error->Text = L"ОШИБКА!";
-			this->error->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->error->Visible = false;
-			// 
 			// hacking
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -2086,5 +2095,24 @@ private: System::Windows::Forms::Label^ error;
 			e->Cancel = true;
 		}
 	}
-	};
+	private: System::Void panel1_3_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			lastLocation = e->Location;
+	}
+private: System::Void panel1_3_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+		this->prog_name_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+		this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+		this->panel1_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+		this->Location = Point(
+			this->Location.X + e->X - lastLocation.X,
+			this->Location.Y + e->Y - lastLocation.Y);
+	}
+}
+private: System::Void panel1_3_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	this->prog_name_3->Cursor = System::Windows::Forms::Cursors::Default;
+	this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::Default;
+	this->panel1_3->Cursor = System::Windows::Forms::Cursors::Default;
+}
+};
 }

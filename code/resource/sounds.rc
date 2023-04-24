@@ -15,3 +15,5 @@
 15 WAVE "winXP_insert.wav"
 16 WAVE "winXP_remove.wav"
 17 WAVE "chord.wav"
+18 WAVE "loading_sound.wav"
+19 WAVE "hide_sound.wav"

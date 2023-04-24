@@ -1,4 +1,4 @@
-#include "main.h"
+#include "loading_screen.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,7 +8,7 @@ using namespace System::Windows::Forms;
 int main() {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::EnableVisualStyles();
-	solver::main form;
+	solver::loading_screen form;
 	Application::Run(% form);
 	return 0;
 }

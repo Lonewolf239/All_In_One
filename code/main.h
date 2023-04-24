@@ -1,5 +1,6 @@
 #include "loading.h"
 #include "developer.h"
+#include <windows.h>
 
 namespace solver {
 
@@ -22,7 +23,7 @@ namespace solver {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panel1_1;
-	protected:
+	protected: Point lastLocation, first_location;
 
 
 
@@ -108,6 +109,9 @@ namespace solver {
 			this->panel1_1->Name = L"panel1_1";
 			this->panel1_1->Size = System::Drawing::Size(590, 30);
 			this->panel1_1->TabIndex = 0;
+			this->panel1_1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
+			this->panel1_1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
+			this->panel1_1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
 			// 
 			// quest_btn
 			// 
@@ -134,6 +138,9 @@ namespace solver {
 			this->icon_prog1->Name = L"icon_prog1";
 			this->icon_prog1->Size = System::Drawing::Size(30, 30);
 			this->icon_prog1->TabIndex = 3;
+			this->icon_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
+			this->icon_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
+			this->icon_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
 			// 
 			// hide_btn
 			// 
@@ -178,6 +185,9 @@ namespace solver {
 			this->name_prog1->Size = System::Drawing::Size(340, 29);
 			this->name_prog1->TabIndex = 0;
 			this->name_prog1->Text = L"Программа \"Всё В Одном\"";
+			this->name_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
+			this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
+			this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
 			// 
 			// panel2_1
 			// 
@@ -366,6 +376,7 @@ namespace solver {
 			this->Name = L"main";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
+			this->Load += gcnew System::EventHandler(this, &main::main_Load);
 			this->panel1_1->ResumeLayout(false);
 			this->panel1_1->PerformLayout();
 			this->panel2_1->ResumeLayout(false);
@@ -386,6 +397,10 @@ namespace solver {
 		Application::Exit();
 	}
 	private: System::Void hide_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		PlaySound(nullptr, nullptr, 0);
+		PlaySound(MAKEINTRESOURCE(19), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
+		SetWindowPos((HWND)this->Handle.ToPointer(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+		AnimateWindow((HWND)this->Handle.ToPointer(), 325, AW_HIDE | AW_BLEND);
 		this->WindowState = FormWindowState::Minimized;
 	}
 	private: System::Void hide_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
@@ -396,6 +411,7 @@ namespace solver {
 	}
 	private: System::Void start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		_form = gcnew loading;
+		this->Location = this->first_location;
 		_form->Show();
 		if (_form1)
 			_form1->Close();
@@ -417,6 +433,9 @@ namespace solver {
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		if (!_form1_opened) {
 			_form1 = gcnew developer;
+			int xPos = (this->Width - _form1->Width) / 2 + this->Location.X;
+			int yPos = (this->Height - _form1->Height) / 2 + this->Location.Y;
+			_form1->Location = System::Drawing::Point(xPos, yPos);
 			_form1->Show();
 			_form1_opened = true;
 		}
@@ -431,5 +450,27 @@ namespace solver {
 		ToolTip^ g = gcnew ToolTip();
 		g->SetToolTip(quest_btn, "О Разработчике");
 	}
+	private: System::Void panel1_1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			lastLocation = e->Location;
+	}
+	private: System::Void panel1_1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			this->name_prog1->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->orig_icon1->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->panel1_1->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->Location = Point(
+				this->Location.X + e->X - lastLocation.X,
+				this->Location.Y + e->Y - lastLocation.Y);
+		}
+	}
+	private: System::Void panel1_1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
+		this->orig_icon1->Cursor = System::Windows::Forms::Cursors::Default;
+		this->panel1_1->Cursor = System::Windows::Forms::Cursors::Default;
+	}
+private: System::Void main_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->first_location = this->Location;
+}
 };
 }

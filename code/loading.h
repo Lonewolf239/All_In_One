@@ -63,9 +63,7 @@ namespace solver {
 	private:int screenW, screenH;
 	private: int x1, y1, x2, y2, x3, y3, x6, y6, x8, y8, x9, y9, x0, y0, xresh, yresh;
 	private: bool other = false;
-
-
-
+	protected: Point lastLocation;
 	private: System::Windows::Forms::Label^ number;
 	private: System::Windows::Forms::Panel^ panel2_2;
 
@@ -343,6 +341,9 @@ namespace solver {
 			this->label1_2->Size = System::Drawing::Size(390, 270);
 			this->label1_2->TabIndex = 2;
 			this->label1_2->Visible = false;
+			this->label1_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
+			this->label1_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
+			this->label1_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
 			// 
 			// panel3_2
 			// 
@@ -488,6 +489,9 @@ namespace solver {
 			this->label2_2->Size = System::Drawing::Size(199, 16);
 			this->label2_2->TabIndex = 12;
 			this->label2_2->Text = L"Программа \"Всё В Одном\"";
+			this->label2_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
+			this->label2_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
+			this->label2_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
 			// 
 			// timer4_2
 			// 
@@ -504,6 +508,9 @@ namespace solver {
 			this->panel4_2->Name = L"panel4_2";
 			this->panel4_2->Size = System::Drawing::Size(390, 20);
 			this->panel4_2->TabIndex = 12;
+			this->panel4_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
+			this->panel4_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
+			this->panel4_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
 			// 
 			// label3
 			// 
@@ -519,6 +526,9 @@ namespace solver {
 			this->label4_2->Name = L"label4_2";
 			this->label4_2->Size = System::Drawing::Size(20, 20);
 			this->label4_2->TabIndex = 15;
+			this->label4_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
+			this->label4_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
+			this->label4_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
 			// 
 			// timer5_2
 			// 
@@ -978,6 +988,27 @@ namespace solver {
 			MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			e->Cancel = true;
 		}
+	}
+	private: System::Void label2_2_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			lastLocation = e->Location;
+	}
+	private: System::Void label2_2_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			this->label1_2->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->label2_2->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->label4_2->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->panel4_2->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->Location = Point(
+				this->Location.X + e->X - lastLocation.X,
+				this->Location.Y + e->Y - lastLocation.Y);
+		}
+	}
+	private: System::Void label2_2_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		this->label1_2->Cursor = System::Windows::Forms::Cursors::Default;
+		this->label2_2->Cursor = System::Windows::Forms::Cursors::Default;
+		this->label4_2->Cursor = System::Windows::Forms::Cursors::Default;
+		this->panel4_2->Cursor = System::Windows::Forms::Cursors::Default;
 	}
 	};
 }

@@ -24,6 +24,8 @@ namespace solver {
 		}
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: bool first_draw = true;
+	protected: Point lastLocation, first_location;
 	public:
 	private: main^ _form1;
 	protected:
@@ -69,10 +71,13 @@ namespace solver {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading_screen::pictureBox1_MouseDown);
+			this->pictureBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading_screen::pictureBox1_MouseMove);
+			this->pictureBox1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading_screen::pictureBox1_MouseUp);
 			// 
 			// timer1
 			// 
-			this->timer1->Interval = 5500;
+			this->timer1->Interval = 6250;
 			this->timer1->Tick += gcnew System::EventHandler(this, &loading_screen::timer1_Tick);
 			// 
 			// loading_screen
@@ -94,15 +99,38 @@ namespace solver {
 	private: System::Void loading_screen_Load(System::Object^ sender, System::EventArgs^ e) {
 		_form1 = gcnew main;
 		_form1->ShowInTaskbar = false;
-		_form1->Show();
 		PlaySound(MAKEINTRESOURCE(18), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 		this->timer1->Start();
+		_form1->Show();
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		loading_screen::Hide();
+		_form1->Location = this->first_location;
 		_form1->ShowInTaskbar = true;
 		PlaySound(nullptr, nullptr, 0);
 		this->timer1->Stop();
+	}
+	private: System::Void pictureBox1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (this->first_draw) {
+			this->first_location = _form1->Location;
+			this->first_draw = false;
+		}
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			lastLocation = e->Location;
+	}
+	private: System::Void pictureBox1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			this->pictureBox1->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->Location = Point(
+				this->Location.X + e->X - lastLocation.X,
+				this->Location.Y + e->Y - lastLocation.Y);
+			_form1->Location = Point(
+				_form1->Location.X + e->X - lastLocation.X,
+				_form1->Location.Y + e->Y - lastLocation.Y);
+		}
+	}
+	private: System::Void pictureBox1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		this->pictureBox1->Cursor = System::Windows::Forms::Cursors::Default;
 	}
 	};
 }
