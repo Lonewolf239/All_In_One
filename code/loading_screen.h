@@ -102,6 +102,7 @@ namespace solver {
 		PlaySound(MAKEINTRESOURCE(18), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 		this->timer1->Start();
 		_form1->Show();
+		this->first_location = _form1->Location;
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		loading_screen::Hide();
@@ -111,10 +112,6 @@ namespace solver {
 		this->timer1->Stop();
 	}
 	private: System::Void pictureBox1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		if (this->first_draw) {
-			this->first_location = _form1->Location;
-			this->first_draw = false;
-		}
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
 			lastLocation = e->Location;
 	}
