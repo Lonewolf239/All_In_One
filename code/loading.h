@@ -207,6 +207,7 @@ namespace solver {
 			this->button_resh->Name = L"button_resh";
 			this->button_resh->Size = System::Drawing::Size(35, 35);
 			this->button_resh->TabIndex = 12;
+			this->button_resh->TabStop = false;
 			this->button_resh->Text = L"#";
 			this->button_resh->UseVisualStyleBackColor = true;
 			this->button_resh->Click += gcnew System::EventHandler(this, &loading::button_resh_Click);
@@ -219,6 +220,7 @@ namespace solver {
 			this->button_zvd->Name = L"button_zvd";
 			this->button_zvd->Size = System::Drawing::Size(35, 35);
 			this->button_zvd->TabIndex = 11;
+			this->button_zvd->TabStop = false;
 			this->button_zvd->Text = L"*";
 			this->button_zvd->UseVisualStyleBackColor = true;
 			// 
@@ -230,6 +232,7 @@ namespace solver {
 			this->button0->Name = L"button0";
 			this->button0->Size = System::Drawing::Size(35, 35);
 			this->button0->TabIndex = 10;
+			this->button0->TabStop = false;
 			this->button0->Text = L"0";
 			this->button0->UseVisualStyleBackColor = true;
 			// 
@@ -241,6 +244,7 @@ namespace solver {
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(35, 35);
 			this->button9->TabIndex = 9;
+			this->button9->TabStop = false;
 			this->button9->Text = L"9";
 			this->button9->UseVisualStyleBackColor = true;
 			// 
@@ -252,6 +256,7 @@ namespace solver {
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(35, 35);
 			this->button8->TabIndex = 8;
+			this->button8->TabStop = false;
 			this->button8->Text = L"8";
 			this->button8->UseVisualStyleBackColor = true;
 			// 
@@ -263,6 +268,7 @@ namespace solver {
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(35, 35);
 			this->button7->TabIndex = 7;
+			this->button7->TabStop = false;
 			this->button7->Text = L"7";
 			this->button7->UseVisualStyleBackColor = true;
 			// 
@@ -274,6 +280,7 @@ namespace solver {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(35, 35);
 			this->button6->TabIndex = 6;
+			this->button6->TabStop = false;
 			this->button6->Text = L"6";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
@@ -285,6 +292,7 @@ namespace solver {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(35, 35);
 			this->button5->TabIndex = 5;
+			this->button5->TabStop = false;
 			this->button5->Text = L"5";
 			this->button5->UseVisualStyleBackColor = true;
 			// 
@@ -296,6 +304,7 @@ namespace solver {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(35, 35);
 			this->button4->TabIndex = 4;
+			this->button4->TabStop = false;
 			this->button4->Text = L"4";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
@@ -307,6 +316,7 @@ namespace solver {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(35, 35);
 			this->button3->TabIndex = 3;
+			this->button3->TabStop = false;
 			this->button3->Text = L"3";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
@@ -318,6 +328,7 @@ namespace solver {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(35, 35);
 			this->button2->TabIndex = 2;
+			this->button2->TabStop = false;
 			this->button2->Text = L"2";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
@@ -329,6 +340,7 @@ namespace solver {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(35, 35);
 			this->button1->TabIndex = 1;
+			this->button1->TabStop = false;
 			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
@@ -457,6 +469,7 @@ namespace solver {
 			this->canc1->Name = L"canc1";
 			this->canc1->Size = System::Drawing::Size(117, 40);
 			this->canc1->TabIndex = 10;
+			this->canc1->TabStop = false;
 			this->canc1->Text = L"Отмена";
 			this->canc1->UseVisualStyleBackColor = false;
 			this->canc1->MouseEnter += gcnew System::EventHandler(this, &loading::canc1_MouseEnter);
@@ -472,6 +485,7 @@ namespace solver {
 			this->canc2->Name = L"canc2";
 			this->canc2->Size = System::Drawing::Size(117, 40);
 			this->canc2->TabIndex = 11;
+			this->canc2->TabStop = false;
 			this->canc2->Text = L"Отмена";
 			this->canc2->UseVisualStyleBackColor = false;
 			this->canc2->Visible = false;

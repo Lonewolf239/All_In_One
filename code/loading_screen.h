@@ -1,4 +1,6 @@
 #include "main.h"
+#include <wininet.h>
+#pragma comment(lib, "wininet.lib")
 
 namespace solver {
 
@@ -25,8 +27,41 @@ namespace solver {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: bool first_draw = true;
+	private: bool has_wifi = false, has_admin = false;
+	private: int tick = 0;
 	protected: Point lastLocation, first_location;
-	public:
+	protected:
+		BOOL IsUserAnAdmin() {
+			BOOL bResult = FALSE;
+			PSID psidAdmin = NULL;
+			SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
+			if (AllocateAndInitializeSid(&NtAuthority, 2,
+				SECURITY_BUILTIN_DOMAIN_RID,
+				DOMAIN_ALIAS_RID_ADMINS,
+				0, 0, 0, 0, 0, 0, &psidAdmin)) {
+				if (!CheckTokenMembership(NULL, psidAdmin, &bResult))
+					bResult = TRUE;
+			}
+			if (psidAdmin)
+				FreeSid(psidAdmin);
+			return bResult;
+		}
+		bool IsInternetConnected() {
+			HINTERNET hInternet = InternetOpen(L"Test", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
+			if (hInternet != NULL) {
+				HINTERNET hFile = InternetOpenUrl(hInternet, L"https://www.google.com", NULL, 0, INTERNET_FLAG_RELOAD, 0);
+				if (hFile != NULL) {
+					InternetCloseHandle(hFile);
+					InternetCloseHandle(hInternet);
+					return true;
+				}
+				else
+					InternetCloseHandle(hInternet);
+				return false;
+			}
+			else
+				return false;
+		}
 	private: main^ _form1;
 	protected:
 		/// <summary>
@@ -77,7 +112,7 @@ namespace solver {
 			// 
 			// timer1
 			// 
-			this->timer1->Interval = 6250;
+			this->timer1->Interval = 1500;
 			this->timer1->Tick += gcnew System::EventHandler(this, &loading_screen::timer1_Tick);
 			// 
 			// loading_screen
@@ -105,11 +140,32 @@ namespace solver {
 		this->first_location = _form1->Location;
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		loading_screen::Hide();
-		_form1->Location = this->first_location;
-		_form1->ShowInTaskbar = true;
-		PlaySound(nullptr, nullptr, 0);
-		this->timer1->Stop();
+		if (this->tick == 0) {
+			this->has_wifi = IsInternetConnected();
+			if (!this->has_wifi) {
+				PlaySound(nullptr, nullptr, 0);
+				this->timer1->Stop();
+				MessageBox::Show("Требуется интернет соединение!", "Отсутствует интернет соединение!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				Application::Exit();
+			}
+		}
+		else if (this->tick == 2) {
+			this->has_admin = IsUserAnAdmin();
+			if (!this->has_admin) {
+				PlaySound(nullptr, nullptr, 0);
+				this->timer1->Stop();
+				MessageBox::Show("Запустите Программу \"Всё В Одном\" от имени Администратора!", "Не Администратор!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				Application::Exit();
+			}
+		}
+		else if (this->tick == 3) {
+			loading_screen::Hide();
+			_form1->Location = this->first_location;
+			_form1->ShowInTaskbar = true;
+			PlaySound(nullptr, nullptr, 0);
+			this->timer1->Stop();
+		}
+		this->tick++;
 	}
 	private: System::Void pictureBox1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)

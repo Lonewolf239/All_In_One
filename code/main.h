@@ -296,6 +296,7 @@ namespace solver {
 			this->start_btn1->Name = L"start_btn1";
 			this->start_btn1->Size = System::Drawing::Size(123, 60);
 			this->start_btn1->TabIndex = 9;
+			this->start_btn1->TabStop = false;
 			this->start_btn1->Text = L"Старт";
 			this->start_btn1->UseVisualStyleBackColor = false;
 			this->start_btn1->Click += gcnew System::EventHandler(this, &main::start_btn_Click);

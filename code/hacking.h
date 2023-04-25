@@ -41,6 +41,7 @@ namespace solver {
 	private: System::Windows::Forms::Label^ exit_btn_3;
 	private: System::Windows::Forms::Panel^ panel1_3;
 	protected: Point lastLocation;
+	private: int cp;
 
 
 
@@ -375,6 +376,7 @@ private: System::Windows::Forms::Label^ error;
 			this->stop_btn->Name = L"stop_btn";
 			this->stop_btn->Size = System::Drawing::Size(120, 60);
 			this->stop_btn->TabIndex = 9;
+			this->stop_btn->TabStop = false;
 			this->stop_btn->Text = L"СтопЭ!";
 			this->stop_btn->UseVisualStyleBackColor = false;
 			this->stop_btn->Click += gcnew System::EventHandler(this, &hacking::start_btn_Click);
@@ -1663,7 +1665,7 @@ private: System::Windows::Forms::Label^ error;
 		MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar1->Increment(6);
+		this->progressBar1->Increment(rand() % 6);
 		if (this->progressBar1->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer1->Stop();
@@ -1691,7 +1693,12 @@ private: System::Windows::Forms::Label^ error;
 					this->error1 = true;
 				}
 			}
-			this->progressBar2->Increment(4);
+			if (this->progressBar2->Value < 58)
+				this->progressBar2->Increment(rand() % 5);
+			else if(this->progressBar2->Value >= 58 && this->progressBar2->Value < 85)
+				this->progressBar2->Increment(rand() % 3);
+			else
+				this->progressBar2->Increment(rand() % 2);
 			if (this->progressBar2->Value == 100) {
 				this->main_progres->Increment(1);
 				this->timer2->Stop();
@@ -1706,7 +1713,10 @@ private: System::Windows::Forms::Label^ error;
 	}
 	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (!propysk1) {
-			this->progressBar3->Increment(5);
+			if (this->progressBar3->Value < 45)
+				this->progressBar3->Increment(rand() % 5);
+			else
+				this->progressBar3->Increment(25 + rand() % 10);
 			if (this->progressBar3->Value == 100) {
 				this->main_progres->Increment(1);
 				this->timer3->Stop();
@@ -1720,7 +1730,12 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar4->Increment(3);
+		if (this->progressBar4->Value < 49)
+			this->progressBar4->Increment(rand() % 3);
+		else if (this->progressBar4->Value >= 49 && this->progressBar4->Value < 77)
+			this->progressBar4->Increment(rand() % 7);
+		else
+			this->progressBar4->Increment(rand() % 4);
 		if (this->progressBar4->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer4->Stop();
@@ -1728,7 +1743,10 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer5_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar5->Increment(5);
+		if (this->progressBar5->Value < 30)
+			this->progressBar5->Increment(rand() % 3);
+		else
+			this->progressBar5->Increment(rand() % 60);
 		if (this->progressBar5->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer5->Stop();
@@ -1736,7 +1754,12 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer6_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar6->Increment(2);
+		if (this->progressBar6->Value < 60)
+			this->progressBar6->Increment(rand() % 2);
+		else if (this->progressBar6->Value >= 60 && this->progressBar6->Value < 85)
+			this->progressBar6->Increment(rand() % 5);
+		else
+			this->progressBar6->Increment(rand() % 2);
 		if (this->progressBar6->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer6->Stop();
@@ -1745,7 +1768,10 @@ private: System::Windows::Forms::Label^ error;
 	}
 	private: System::Void timer7_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (!propysk4) {
-			this->progressBar7->Increment(2);
+			if (this->progressBar7->Value < 60)
+				this->progressBar7->Increment(rand() % 2);
+			else
+				this->progressBar7->Increment(40);
 			if (this->progressBar7->Value == 100) {
 				this->main_progres->Increment(1);
 				this->timer7->Stop();
@@ -1759,7 +1785,12 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer8_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar8->Increment(2);
+		if(this->progressBar8->Value < 25)
+		this->progressBar8->Increment(rand() % 2);
+		else if (this->progressBar8->Value >= 25 && this->progressBar8->Value < 80)
+			this->progressBar8->Increment(rand() % 5);
+		else
+			this->progressBar8->Increment(rand() % 20);
 		if (this->progressBar8->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer8->Stop();
@@ -1767,7 +1798,10 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer9_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar9->Increment(3);
+		if (this->progressBar9->Value < 37)
+			this->progressBar9->Increment(rand() % 3);
+		else if (this->progressBar9->Value >= 37)
+			this->progressBar9->Increment(rand() % 8);
 		if (this->progressBar9->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer9->Stop();
@@ -1775,7 +1809,10 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer10_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar10->Increment(4);
+		if (this->progressBar10->Value < 89)
+			this->progressBar10->Increment(rand() % 4);
+		else
+			this->progressBar10->Increment(rand() % 2);
 		if (this->progressBar10->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer10->Stop();
@@ -1783,7 +1820,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer11_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar11->Increment(2);
+		this->progressBar11->Increment(rand() % 2);
 		if (this->progressBar11->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer11->Stop();
@@ -1791,7 +1828,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer12_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar12->Increment(2);
+		this->progressBar12->Increment(rand() % 2);
 		if (this->progressBar12->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer12->Stop();
@@ -1799,7 +1836,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer13_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar13->Increment(6);
+		this->progressBar13->Increment(rand() % 6);
 		if (this->progressBar13->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer13->Stop();
@@ -1813,7 +1850,10 @@ private: System::Windows::Forms::Label^ error;
 
 	}
 	private: System::Void timer15_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar15->Increment(4);
+		if (this->progressBar15->Value < 76)
+			this->progressBar15->Increment(rand() % 4);
+		else
+			this->progressBar15->Increment(rand() % 6);
 		if (this->progressBar15->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer15->Stop();
@@ -1821,7 +1861,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer16_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar16->Increment(1);
+		this->progressBar16->Increment(rand() % 2);
 		if (this->progressBar16->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer16->Stop();
@@ -1829,7 +1869,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer17_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar17->Increment(1);
+		this->progressBar17->Increment(rand() % 2);
 		if (this->progressBar17->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer17->Stop();
@@ -1837,7 +1877,26 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer18_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar18->Increment(1);
+		if (this->progressBar18->Value < 36)
+			this->progressBar18->Increment(rand() % 2);
+		else if (this->progressBar18->Value >= 36 && this->progressBar18->Value < 39) {
+			this->cp++;
+			if (this->cp > 6)
+				this->progressBar18->Increment(rand() % 2);
+		}
+		else if (this->progressBar18->Value >= 39 && this->progressBar18->Value < 89) {
+			this->cp = 0;
+			this->progressBar18->Increment(rand() % 4);
+		}
+		else if (this->progressBar18->Value >= 89 && this->progressBar18->Value < 114) {
+			this->cp++;
+			if (this->cp > 8)
+				this->progressBar18->Increment(rand() % 2);
+		}
+		else if (this->progressBar18->Value >= 114 && this->progressBar18->Value < 170)
+			this->progressBar18->Increment(rand() % 7);
+		else if (this->progressBar18->Value >= 170)
+			this->progressBar18->Increment(rand() % 2);
 		if (this->progressBar18->Value == 200) {
 			this->main_progres->Increment(1);
 			this->timer18->Stop();
@@ -1845,7 +1904,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer19_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar19->Increment(3);
+		this->progressBar19->Increment(rand() % 3);
 		if (this->progressBar19->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer19->Stop();
@@ -1853,7 +1912,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer20_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar20->Increment(3);
+		this->progressBar20->Increment(rand() % 4);
 		if (this->progressBar20->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer20->Stop();
@@ -1862,7 +1921,7 @@ private: System::Windows::Forms::Label^ error;
 	}
 	private: System::Void timer21_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (!propysk2) {
-			this->progressBar21->Increment(5);
+			this->progressBar21->Increment(rand() % 5);
 			if (this->progressBar21->Value == 100) {
 				this->main_progres->Increment(1);
 				this->timer21->Stop();
@@ -1876,7 +1935,10 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer22_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar22->Increment(4);
+		if (this->progressBar22->Value < 66)
+			this->progressBar22->Increment(66);
+		else
+			this->progressBar22->Increment(rand() % 4);
 		if (this->progressBar22->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer22->Stop();
@@ -1884,7 +1946,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer23_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar23->Increment(1);
+		this->progressBar23->Increment(rand() % 2);
 		if (this->progressBar23->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer23->Stop();
@@ -1892,7 +1954,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer24_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar24->Increment(1);
+		this->progressBar24->Increment(rand() % 2);
 		if (this->progressBar24->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer24->Stop();
@@ -1900,7 +1962,7 @@ private: System::Windows::Forms::Label^ error;
 		}
 	}
 	private: System::Void timer25_Tick(System::Object^ sender, System::EventArgs^ e) {
-		this->progressBar25->Increment(1);
+		this->progressBar25->Increment(rand() % 2);
 		if (this->progressBar25->Value == 100) {
 			this->main_progres->Increment(1);
 			this->timer25->Stop();
@@ -2099,20 +2161,20 @@ private: System::Windows::Forms::Label^ error;
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
 			lastLocation = e->Location;
 	}
-private: System::Void panel1_3_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	if (e->Button == System::Windows::Forms::MouseButtons::Left) {
-		this->prog_name_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
-		this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
-		this->panel1_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
-		this->Location = Point(
-			this->Location.X + e->X - lastLocation.X,
-			this->Location.Y + e->Y - lastLocation.Y);
+	private: System::Void panel1_3_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			this->prog_name_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->panel1_3->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->Location = Point(
+				this->Location.X + e->X - lastLocation.X,
+				this->Location.Y + e->Y - lastLocation.Y);
+		}
 	}
-}
-private: System::Void panel1_3_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	this->prog_name_3->Cursor = System::Windows::Forms::Cursors::Default;
-	this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::Default;
-	this->panel1_3->Cursor = System::Windows::Forms::Cursors::Default;
-}
-};
+	private: System::Void panel1_3_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		this->prog_name_3->Cursor = System::Windows::Forms::Cursors::Default;
+		this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::Default;
+		this->panel1_3->Cursor = System::Windows::Forms::Cursors::Default;
+	}
+	};
 }
