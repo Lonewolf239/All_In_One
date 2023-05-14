@@ -48,6 +48,7 @@ namespace solver {
 	private: System::Windows::Forms::Button^ teg_btn;
 	private: System::Windows::Forms::Label^ exit_btn;
 	private: bool exit_right = false;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -67,6 +68,7 @@ namespace solver {
 			   this->dis_btn = (gcnew System::Windows::Forms::Button());
 			   this->git_btn = (gcnew System::Windows::Forms::Button());
 			   this->teg_btn = (gcnew System::Windows::Forms::Button());
+			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   this->panel1_1->SuspendLayout();
 			   this->SuspendLayout();
 			   // 
@@ -110,10 +112,11 @@ namespace solver {
 			   this->name_prog1->ForeColor = System::Drawing::Color::White;
 			   this->name_prog1->Location = System::Drawing::Point(0, 4);
 			   this->name_prog1->Name = L"name_prog1";
-			   this->name_prog1->Size = System::Drawing::Size(142, 18);
+			   this->name_prog1->Size = System::Drawing::Size(132, 22);
 			   this->name_prog1->TabIndex = 0;
 			   this->name_prog1->Text = L"О Разработчике:";
 			   this->name_prog1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->name_prog1->UseCompatibleTextRendering = true;
 			   this->name_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseDown);
 			   this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseMove);
 			   this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseUp);
@@ -122,14 +125,16 @@ namespace solver {
 			   // 
 			   this->dis_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
 			   this->dis_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->dis_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->dis_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->dis_btn->ForeColor = System::Drawing::Color::Black;
-			   this->dis_btn->Location = System::Drawing::Point(12, 35);
+			   this->dis_btn->Location = System::Drawing::Point(13, 35);
 			   this->dis_btn->Name = L"dis_btn";
 			   this->dis_btn->Size = System::Drawing::Size(176, 30);
 			   this->dis_btn->TabIndex = 10;
-			   this->dis_btn->Text = L"Хочу заказать прогу";
+			   this->dis_btn->TabStop = false;
+			   this->dis_btn->Text = L"Оформить заказ";
+			   this->dis_btn->UseCompatibleTextRendering = true;
 			   this->dis_btn->UseVisualStyleBackColor = false;
 			   this->dis_btn->Click += gcnew System::EventHandler(this, &developer::dis_btn_Click);
 			   // 
@@ -140,11 +145,13 @@ namespace solver {
 			   this->git_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->git_btn->ForeColor = System::Drawing::Color::Black;
-			   this->git_btn->Location = System::Drawing::Point(12, 69);
+			   this->git_btn->Location = System::Drawing::Point(12, 105);
 			   this->git_btn->Name = L"git_btn";
 			   this->git_btn->Size = System::Drawing::Size(86, 30);
 			   this->git_btn->TabIndex = 12;
+			   this->git_btn->TabStop = false;
 			   this->git_btn->Text = L"GitHub";
+			   this->git_btn->UseCompatibleTextRendering = true;
 			   this->git_btn->UseVisualStyleBackColor = false;
 			   this->git_btn->Click += gcnew System::EventHandler(this, &developer::git_btn_Click);
 			   // 
@@ -154,13 +161,32 @@ namespace solver {
 			   this->teg_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			   this->teg_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold));
 			   this->teg_btn->ForeColor = System::Drawing::Color::Black;
-			   this->teg_btn->Location = System::Drawing::Point(102, 69);
+			   this->teg_btn->Location = System::Drawing::Point(104, 105);
 			   this->teg_btn->Name = L"teg_btn";
 			   this->teg_btn->Size = System::Drawing::Size(86, 30);
 			   this->teg_btn->TabIndex = 13;
+			   this->teg_btn->TabStop = false;
 			   this->teg_btn->Text = L"Telegram";
+			   this->teg_btn->UseCompatibleTextRendering = true;
 			   this->teg_btn->UseVisualStyleBackColor = false;
 			   this->teg_btn->Click += gcnew System::EventHandler(this, &developer::teg_btn_Click);
+			   // 
+			   // button1
+			   // 
+			   this->button1->BackColor = System::Drawing::Color::MediumSpringGreen;
+			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->button1->ForeColor = System::Drawing::Color::Black;
+			   this->button1->Location = System::Drawing::Point(12, 70);
+			   this->button1->Name = L"button1";
+			   this->button1->Size = System::Drawing::Size(176, 30);
+			   this->button1->TabIndex = 14;
+			   this->button1->TabStop = false;
+			   this->button1->Text = L"Bug Report";
+			   this->button1->UseCompatibleTextRendering = true;
+			   this->button1->UseVisualStyleBackColor = false;
+			   this->button1->Click += gcnew System::EventHandler(this, &developer::button1_Click);
 			   // 
 			   // developer
 			   // 
@@ -169,7 +195,8 @@ namespace solver {
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(145)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			   this->ClientSize = System::Drawing::Size(200, 104);
+			   this->ClientSize = System::Drawing::Size(200, 142);
+			   this->Controls->Add(this->button1);
 			   this->Controls->Add(this->teg_btn);
 			   this->Controls->Add(this->git_btn);
 			   this->Controls->Add(this->dis_btn);
@@ -233,5 +260,8 @@ namespace solver {
 		this->panel1_1->Cursor = System::Windows::Forms::Cursors::Default;
 		this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_BugReportBOT");
+}
 };
 }
