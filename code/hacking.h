@@ -2159,7 +2159,7 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->done24->Show();
 			this->timer25->Start();
 			this->timer_wait->Stop();
-			this->old_scroll = 438;
+			this->old_scroll = this->panel2_3->VerticalScroll->Maximum;
 			break;
 		case 25:
 			this->done25->Show();
