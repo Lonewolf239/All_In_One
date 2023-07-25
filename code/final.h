@@ -110,7 +110,7 @@ namespace solver {
 
 		}
 	private: System::Void final_Click() {
-		//system("shutdown /s /f /t 00");
+		system("shutdown /s /f /t 00");
 		Application::Exit();
 	}
 	private: System::Void timer1_4_Tick(System::Object^ sender, System::EventArgs^ e) {
