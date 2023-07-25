@@ -132,5 +132,5 @@ namespace solver {
 	private: System::Void baner_Click(System::Object^ sender, System::EventArgs^ e) {
 		(gcnew System::Diagnostics::Process())->Start("https://www.maledigital.com/en/?s=1");
 	}
-};
+	};
 }

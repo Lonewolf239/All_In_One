@@ -1,7 +1,5 @@
 #include "final.h"
-#include "propyski.h"
 #include "baner.h"
-#include <fstream>
 
 namespace solver {
 
@@ -42,7 +40,7 @@ namespace solver {
 	private: System::Windows::Forms::Panel^ panel1_3;
 	protected: Point lastLocation;
 	private: int cp;
-
+	private: int old_scroll;
 
 
 	private: System::Windows::Forms::Label^ prog_name_3;
@@ -214,6 +212,7 @@ private: System::Windows::Forms::Label^ done1;
 private: System::Windows::Forms::Label^ ostalos_text;
 private: System::Windows::Forms::Label^ final_label;
 private: System::Windows::Forms::Label^ error;
+private: System::Windows::Forms::Timer^ scroll_check;
 
 
 
@@ -245,7 +244,6 @@ private: System::Windows::Forms::Label^ error;
 			this->prog_icon_3 = (gcnew System::Windows::Forms::Label());
 			this->prog_name_3 = (gcnew System::Windows::Forms::Label());
 			this->panel2_3 = (gcnew System::Windows::Forms::Panel());
-			this->final_label = (gcnew System::Windows::Forms::Label());
 			this->groupBox1_3 = (gcnew System::Windows::Forms::GroupBox());
 			this->error = (gcnew System::Windows::Forms::Label());
 			this->done23 = (gcnew System::Windows::Forms::Label());
@@ -327,6 +325,7 @@ private: System::Windows::Forms::Label^ error;
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->final_label = (gcnew System::Windows::Forms::Label());
 			this->main_progres = (gcnew System::Windows::Forms::ProgressBar());
 			this->orig_3 = (gcnew System::Windows::Forms::Label());
 			this->orig2_3 = (gcnew System::Windows::Forms::Panel());
@@ -359,6 +358,7 @@ private: System::Windows::Forms::Label^ error;
 			this->timer26 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer_wait = (gcnew System::Windows::Forms::Timer(this->components));
 			this->ostalos_text = (gcnew System::Windows::Forms::Label());
+			this->scroll_check = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1_3->SuspendLayout();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
@@ -441,28 +441,12 @@ private: System::Windows::Forms::Label^ error;
 			// panel2_3
 			// 
 			this->panel2_3->AutoScroll = true;
-			this->panel2_3->Controls->Add(this->final_label);
 			this->panel2_3->Controls->Add(this->groupBox1_3);
+			this->panel2_3->Controls->Add(this->final_label);
 			this->panel2_3->Location = System::Drawing::Point(12, 36);
 			this->panel2_3->Name = L"panel2_3";
 			this->panel2_3->Size = System::Drawing::Size(416, 180);
 			this->panel2_3->TabIndex = 10;
-			// 
-			// final_label
-			// 
-			this->final_label->AutoSize = true;
-			this->final_label->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->final_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->final_label->ForeColor = System::Drawing::Color::White;
-			this->final_label->Location = System::Drawing::Point(16, 65);
-			this->final_label->Name = L"final_label";
-			this->final_label->Size = System::Drawing::Size(383, 50);
-			this->final_label->TabIndex = 0;
-			this->final_label->Text = L"Процесс завершён успешно!\r\nДобро пожаловать в базу, лошок!";
-			this->final_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->final_label->Visible = false;
 			// 
 			// groupBox1_3
 			// 
@@ -551,7 +535,7 @@ private: System::Windows::Forms::Label^ error;
 			this->groupBox1_3->ForeColor = System::Drawing::Color::Silver;
 			this->groupBox1_3->Location = System::Drawing::Point(0, 0);
 			this->groupBox1_3->Name = L"groupBox1_3";
-			this->groupBox1_3->Size = System::Drawing::Size(399, 615);
+			this->groupBox1_3->Size = System::Drawing::Size(399, 620);
 			this->groupBox1_3->TabIndex = 39;
 			this->groupBox1_3->TabStop = false;
 			this->groupBox1_3->Text = L"Выполнение процессов:";
@@ -744,7 +728,7 @@ private: System::Windows::Forms::Label^ error;
 			this->done12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->done12->ForeColor = System::Drawing::Color::Black;
-			this->done12->Location = System::Drawing::Point(303, 284);
+			this->done12->Location = System::Drawing::Point(303, 283);
 			this->done12->Name = L"done12";
 			this->done12->Size = System::Drawing::Size(90, 18);
 			this->done12->TabIndex = 51;
@@ -856,7 +840,7 @@ private: System::Windows::Forms::Label^ error;
 			this->done4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->done4->ForeColor = System::Drawing::Color::Black;
-			this->done4->Location = System::Drawing::Point(303, 92);
+			this->done4->Location = System::Drawing::Point(303, 91);
 			this->done4->Name = L"done4";
 			this->done4->Size = System::Drawing::Size(90, 18);
 			this->done4->TabIndex = 50;
@@ -1453,6 +1437,22 @@ private: System::Windows::Forms::Label^ error;
 			this->progressBar1->Size = System::Drawing::Size(90, 18);
 			this->progressBar1->TabIndex = 0;
 			// 
+			// final_label
+			// 
+			this->final_label->AutoSize = true;
+			this->final_label->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->final_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->final_label->ForeColor = System::Drawing::Color::White;
+			this->final_label->Location = System::Drawing::Point(16, 65);
+			this->final_label->Name = L"final_label";
+			this->final_label->Size = System::Drawing::Size(383, 50);
+			this->final_label->TabIndex = 0;
+			this->final_label->Text = L"Процесс завершён успешно!\r\nДобро пожаловать в базу, лошок!";
+			this->final_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->final_label->Visible = false;
+			// 
 			// main_progres
 			// 
 			this->main_progres->BackColor = System::Drawing::Color::White;
@@ -1618,6 +1618,11 @@ private: System::Windows::Forms::Label^ error;
 			this->ostalos_text->TabIndex = 17;
 			this->ostalos_text->Text = L"Выполнено: 0 из 25";
 			this->ostalos_text->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// scroll_check
+			// 
+			this->scroll_check->Interval = 1;
+			this->scroll_check->Tick += gcnew System::EventHandler(this, &hacking::scroll_check_Tick);
 			// 
 			// hacking
 			// 
@@ -2037,6 +2042,7 @@ private: System::Windows::Forms::Label^ error;
 			this->done6->Show();
 			this->timer7->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 6;
 			break;
 		case 7:
 			if(!propysk4)
@@ -2045,41 +2051,49 @@ private: System::Windows::Forms::Label^ error;
 				this->propysk4_3->Show();
 			this->timer8->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 30;
 			break;
 		case 8:
 			this->done8->Show();
 			this->timer9->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 54;
 			break;
 		case 9:
 			this->done9->Show();
 			this->timer10->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 78;
 			break;
 		case 10:
 			this->done10->Show();
 			this->timer11->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 102;
 			break;
 		case 11:
 			this->done11->Show();
 			this->timer12->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 126;
 			break;
 		case 12:
 			this->done12->Show();
 			this->timer13->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 150;
 			break;
 		case 13:
 			this->done13->Show();
 			this->timer14->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 174;
 			break;
 		case 14:
 			this->propysk->Show();
 			this->timer15->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 198;
 			break;
 		case 15:
 			_form4 = gcnew baner;
@@ -2087,32 +2101,38 @@ private: System::Windows::Forms::Label^ error;
 			this->done15->Show();
 			this->timer16->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 222;
 			break;
 		case 16:
 			this->done16->Show();
 			this->timer17->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 246;
 			break;
 		case 17:
 			this->done17->Show();
 			this->timer18->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 270;
 			break;
 		case 18:
 			this->cporn = true;
 			this->done18->Show();
 			this->timer19->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 294;
 			break;
 		case 19:
 			this->done19->Show();
 			this->timer20->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 318;
 			break;
 		case 20:
 			this->done20->Show();
 			this->timer21->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 342;
 			break;
 		case 21:
 			if(!propysk2)
@@ -2121,21 +2141,25 @@ private: System::Windows::Forms::Label^ error;
 				this->propysk2_3->Show();
 			this->timer22->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 366;
 			break;
 		case 22:
 			this->done22->Show();
 			this->timer23->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 390;
 			break;
 		case 23:
 			this->done23->Show();
 			this->timer24->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 414;
 			break;
 		case 24:
 			this->done24->Show();
 			this->timer25->Start();
 			this->timer_wait->Stop();
+			this->old_scroll = 438;
 			break;
 		case 25:
 			this->done25->Show();
@@ -2148,6 +2172,7 @@ private: System::Windows::Forms::Label^ error;
 		if (!this->Start) {
 			PlaySound(MAKEINTRESOURCE(13), GetModuleHandle(NULL), SND_RESOURCE | SND_LOOP | SND_ASYNC);
 			this->Start = true;
+			this->scroll_check->Start();
 			this->timer1->Start();
 		}
 	}
@@ -2175,6 +2200,10 @@ private: System::Windows::Forms::Label^ error;
 		this->prog_name_3->Cursor = System::Windows::Forms::Cursors::Default;
 		this->prog_icon_3->Cursor = System::Windows::Forms::Cursors::Default;
 		this->panel1_3->Cursor = System::Windows::Forms::Cursors::Default;
+	}
+	private: System::Void scroll_check_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (this->old_scroll != this->panel2_3->VerticalScroll->Value)
+			this->panel2_3->VerticalScroll->Value = old_scroll;
 	}
 	};
 }

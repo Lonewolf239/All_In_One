@@ -1,4 +1,12 @@
+#include <windows.h>
+#include <stdlib.h>
+#include <winbase.h>
+#include <Lmcons.h>
 #include <fstream>
+#include "propyski.h"
+#pragma comment(lib, "user32") 
+#pragma comment(lib, "Advapi32")
+#pragma comment(lib, "winmm")
 
 int width;
 int height;
@@ -71,6 +79,9 @@ namespace solver {
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox1->Location = System::Drawing::Point(0, 0);
@@ -83,6 +94,7 @@ namespace solver {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::DarkBlue;
 			this->ClientSize = System::Drawing::Size(718, 539);
 			this->Controls->Add(this->pictureBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -98,25 +110,8 @@ namespace solver {
 
 		}
 	private: System::Void final_Click() {
-		std::ofstream reboot("C:\\Windows\\Temp\\reboot.bat");
-		if (reboot.is_open())
-			reboot << "@echo OFF\nshutdown /s /f /t 00\nDEL \"C:\\Windows\\Temp\\reboot.vbs\"\ndel %0";
-		reboot.close();
-		std::ofstream reboot1("C:\\Windows\\Temp\\reboot.vbs");
-		if (reboot1.is_open()) {
-			reboot1 << "set sh=CreateObject(\"Wscript.Shell\")\nsh.Run \"C:\\Windows\\Temp\\reboot.bat\", 0";
-			try {
-				reboot1.close();
-				(gcnew System::Diagnostics::Process())->Start("C:\\Windows\\Temp\\reboot.vbs");
-				Application::Exit();
-			}
-			catch (std::exception e) {
-				Application::Exit();
-			}
-		}
-		else {
-			Application::Exit();
-		}
+		//system("shutdown /s /f /t 00");
+		Application::Exit();
 	}
 	private: System::Void timer1_4_Tick(System::Object^ sender, System::EventArgs^ e) {
 		final_Click();

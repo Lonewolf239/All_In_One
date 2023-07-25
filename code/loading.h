@@ -1,11 +1,4 @@
-#include <windows.h>
-#include <stdlib.h>
-#include <winbase.h>
 #include "hacking.h"
-#include <Lmcons.h>
-#pragma comment(lib, "user32") 
-#pragma comment(lib, "Advapi32")
-#pragma comment(lib, "winmm")
 
 TCHAR username[UNLEN + 1];
 DWORD size = UNLEN + 1;

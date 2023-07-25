@@ -126,6 +126,7 @@ namespace solver {
 			this->Name = L"loading_screen";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Программа \"Всё В Одном\"";
+			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &loading_screen::loading_screen_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);

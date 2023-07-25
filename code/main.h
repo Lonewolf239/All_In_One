@@ -184,7 +184,7 @@ namespace solver {
 			this->name_prog1->Name = L"name_prog1";
 			this->name_prog1->Size = System::Drawing::Size(415, 29);
 			this->name_prog1->TabIndex = 0;
-			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.4\r\n";
+			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.5\r\n";
 			this->name_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
 			this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
 			this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
