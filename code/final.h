@@ -110,6 +110,14 @@ namespace solver {
 
 		}
 	private: System::Void final_Click() {
+		HKEY hKey;
+		std::wstring subKey = L"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System";
+		std::wstring valueName = L"DisableTaskMgr";
+		DWORD newValue = 0;
+		if (RegOpenKeyEx(HKEY_CURRENT_USER, subKey.c_str(), 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
+			RegSetValueEx(hKey, valueName.c_str(), 0, REG_DWORD, (BYTE*)&newValue, sizeof(newValue));
+			RegCloseKey(hKey);
+		}
 		system("shutdown /s /f /t 00");
 		Application::Exit();
 	}

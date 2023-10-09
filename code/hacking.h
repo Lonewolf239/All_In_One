@@ -36,7 +36,7 @@ namespace solver {
 			}
 		}
 	private: System::Windows::Forms::Button^ stop_btn;
-	private: System::Windows::Forms::Label^ exit_btn_3;
+
 	private: System::Windows::Forms::Panel^ panel1_3;
 	protected: Point lastLocation;
 	private: int cp;
@@ -213,6 +213,7 @@ private: System::Windows::Forms::Label^ ostalos_text;
 private: System::Windows::Forms::Label^ final_label;
 private: System::Windows::Forms::Label^ error;
 private: System::Windows::Forms::Timer^ scroll_check;
+private: System::Windows::Forms::PictureBox^ exit_btn_3;
 
 
 
@@ -239,8 +240,8 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(hacking::typeid));
 			this->stop_btn = (gcnew System::Windows::Forms::Button());
-			this->exit_btn_3 = (gcnew System::Windows::Forms::Label());
 			this->panel1_3 = (gcnew System::Windows::Forms::Panel());
+			this->exit_btn_3 = (gcnew System::Windows::Forms::PictureBox());
 			this->prog_icon_3 = (gcnew System::Windows::Forms::Label());
 			this->prog_name_3 = (gcnew System::Windows::Forms::Label());
 			this->panel2_3 = (gcnew System::Windows::Forms::Panel());
@@ -360,6 +361,7 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->ostalos_text = (gcnew System::Windows::Forms::Label());
 			this->scroll_check = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1_3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn_3))->BeginInit();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
 			this->orig2_3->SuspendLayout();
@@ -381,28 +383,12 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->stop_btn->UseVisualStyleBackColor = false;
 			this->stop_btn->Click += gcnew System::EventHandler(this, &hacking::start_btn_Click);
 			// 
-			// exit_btn_3
-			// 
-			this->exit_btn_3->AutoSize = true;
-			this->exit_btn_3->Cursor = System::Windows::Forms::Cursors::Default;
-			this->exit_btn_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->exit_btn_3->ForeColor = System::Drawing::Color::Silver;
-			this->exit_btn_3->Location = System::Drawing::Point(409, 0);
-			this->exit_btn_3->Name = L"exit_btn_3";
-			this->exit_btn_3->Size = System::Drawing::Size(31, 29);
-			this->exit_btn_3->TabIndex = 1;
-			this->exit_btn_3->Text = L"X";
-			this->exit_btn_3->Click += gcnew System::EventHandler(this, &hacking::exit_btn_Click);
-			this->exit_btn_3->MouseEnter += gcnew System::EventHandler(this, &hacking::exit_btn_MouseEnter);
-			this->exit_btn_3->MouseLeave += gcnew System::EventHandler(this, &hacking::exit_btn_MouseLeave);
-			// 
 			// panel1_3
 			// 
 			this->panel1_3->BackColor = System::Drawing::Color::Black;
+			this->panel1_3->Controls->Add(this->exit_btn_3);
 			this->panel1_3->Controls->Add(this->prog_icon_3);
 			this->panel1_3->Controls->Add(this->prog_name_3);
-			this->panel1_3->Controls->Add(this->exit_btn_3);
 			this->panel1_3->Location = System::Drawing::Point(0, 0);
 			this->panel1_3->Name = L"panel1_3";
 			this->panel1_3->Size = System::Drawing::Size(440, 30);
@@ -410,6 +396,20 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->panel1_3->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseDown);
 			this->panel1_3->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseMove);
 			this->panel1_3->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::panel1_3_MouseUp);
+			// 
+			// exit_btn_3
+			// 
+			this->exit_btn_3->Dock = System::Windows::Forms::DockStyle::Right;
+			this->exit_btn_3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"exit_btn_3.Image")));
+			this->exit_btn_3->Location = System::Drawing::Point(410, 0);
+			this->exit_btn_3->Name = L"exit_btn_3";
+			this->exit_btn_3->Size = System::Drawing::Size(30, 30);
+			this->exit_btn_3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->exit_btn_3->TabIndex = 18;
+			this->exit_btn_3->TabStop = false;
+			this->exit_btn_3->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &hacking::exit_btn_3_MouseClick);
+			this->exit_btn_3->MouseEnter += gcnew System::EventHandler(this, &hacking::exit_btn_MouseEnter);
+			this->exit_btn_3->MouseLeave += gcnew System::EventHandler(this, &hacking::exit_btn_MouseLeave);
 			// 
 			// prog_icon_3
 			// 
@@ -1491,7 +1491,7 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->orig1_3->Name = L"orig1_3";
 			this->orig1_3->Size = System::Drawing::Size(178, 58);
 			this->orig1_3->TabIndex = 13;
-			this->orig1_3->Text = L"Windows 10\r\nOriginal 100%";
+			this->orig1_3->Text = L"Windows 11\r\nOriginal 100%";
 			// 
 			// timer1
 			// 
@@ -1647,6 +1647,7 @@ private: System::Windows::Forms::Timer^ scroll_check;
 			this->Load += gcnew System::EventHandler(this, &hacking::hacking_Load);
 			this->panel1_3->ResumeLayout(false);
 			this->panel1_3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn_3))->EndInit();
 			this->panel2_3->ResumeLayout(false);
 			this->panel2_3->PerformLayout();
 			this->groupBox1_3->ResumeLayout(false);
@@ -1665,9 +1666,6 @@ private: System::Windows::Forms::Timer^ scroll_check;
 	}
 	private: System::Void exit_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		this->exit_btn_3->BackColor = System::Drawing::Color::Black;
-	}
-	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->progressBar1->Increment(rand() % 6);
@@ -2205,5 +2203,9 @@ private: System::Windows::Forms::Timer^ scroll_check;
 		if (this->old_scroll != this->panel2_3->VerticalScroll->Value)
 			this->panel2_3->VerticalScroll->Value = old_scroll;
 	}
-	};
+	private: System::Void exit_btn_3_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	}
+};
 }

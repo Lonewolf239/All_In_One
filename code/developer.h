@@ -46,9 +46,10 @@ namespace solver {
 
 	private: System::Windows::Forms::Button^ git_btn;
 	private: System::Windows::Forms::Button^ teg_btn;
-	private: System::Windows::Forms::Label^ exit_btn;
+
 	private: bool exit_right = false;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ exit_btn;
 
 
 
@@ -63,19 +64,19 @@ namespace solver {
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(developer::typeid));
 			   this->panel1_1 = (gcnew System::Windows::Forms::Panel());
-			   this->exit_btn = (gcnew System::Windows::Forms::Label());
+			   this->exit_btn = (gcnew System::Windows::Forms::PictureBox());
 			   this->name_prog1 = (gcnew System::Windows::Forms::Label());
 			   this->dis_btn = (gcnew System::Windows::Forms::Button());
 			   this->git_btn = (gcnew System::Windows::Forms::Button());
 			   this->teg_btn = (gcnew System::Windows::Forms::Button());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   this->panel1_1->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // panel1_1
 			   // 
-			   this->panel1_1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(115)), static_cast<System::Int32>(static_cast<System::Byte>(115)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(115)));
+			   this->panel1_1->BackColor = System::Drawing::Color::Black;
 			   this->panel1_1->Controls->Add(this->exit_btn);
 			   this->panel1_1->Controls->Add(this->name_prog1);
 			   this->panel1_1->Location = System::Drawing::Point(0, 0);
@@ -88,24 +89,21 @@ namespace solver {
 			   // 
 			   // exit_btn
 			   // 
-			   this->exit_btn->Cursor = System::Windows::Forms::Cursors::Default;
-			   this->exit_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(204)));
-			   this->exit_btn->ForeColor = System::Drawing::Color::Silver;
+			   this->exit_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"exit_btn.Image")));
 			   this->exit_btn->Location = System::Drawing::Point(170, 0);
 			   this->exit_btn->Name = L"exit_btn";
 			   this->exit_btn->Size = System::Drawing::Size(30, 30);
-			   this->exit_btn->TabIndex = 2;
-			   this->exit_btn->Text = L"X";
-			   this->exit_btn->Click += gcnew System::EventHandler(this, &developer::exit_btn_Click);
+			   this->exit_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->exit_btn->TabIndex = 0;
+			   this->exit_btn->TabStop = false;
+			   this->exit_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::exit_btn_MouseClick);
 			   this->exit_btn->MouseEnter += gcnew System::EventHandler(this, &developer::exit_btn_MouseEnter);
 			   this->exit_btn->MouseLeave += gcnew System::EventHandler(this, &developer::exit_btn_MouseLeave);
 			   // 
 			   // name_prog1
 			   // 
 			   this->name_prog1->AutoSize = true;
-			   this->name_prog1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(115)), static_cast<System::Int32>(static_cast<System::Byte>(115)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(115)));
+			   this->name_prog1->BackColor = System::Drawing::Color::Black;
 			   this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 			   this->name_prog1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
@@ -212,6 +210,7 @@ namespace solver {
 			   this->Load += gcnew System::EventHandler(this, &developer::developer_Load);
 			   this->panel1_1->ResumeLayout(false);
 			   this->panel1_1->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->EndInit();
 			   this->ResumeLayout(false);
 
 		   }
@@ -224,17 +223,11 @@ namespace solver {
 	private: System::Void dis_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_OrderBOT");
 	}
-	private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		_form1_opened = false;
-		this->exit_right = true;
-		this->Close();
-	}
 	private: System::Void exit_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		this->exit_btn->BackColor = System::Drawing::Color::Red;
 	}
 	private: System::Void exit_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->exit_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(115)), static_cast<System::Int32>(static_cast<System::Byte>(115)),
-			static_cast<System::Int32>(static_cast<System::Byte>(115)));
+		this->exit_btn->BackColor = System::Drawing::Color::Black;
 	}
 	private: System::Void developer_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		if (this->exit_right)
@@ -260,8 +253,15 @@ namespace solver {
 		this->panel1_1->Cursor = System::Windows::Forms::Cursors::Default;
 		this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_BugReportBOT");
-}
-};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_BugReportBOT");
+	}
+	private: System::Void exit_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			_form1_opened = false;
+			this->exit_right = true;
+			this->Close();
+		}
+	}
+	};
 }
