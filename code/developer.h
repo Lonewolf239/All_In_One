@@ -41,15 +41,20 @@ namespace solver {
 		/// </summary>
 		System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::Panel^ panel1_1;
-	private: System::Windows::Forms::Button^ dis_btn;
-	protected: Point lastLocation;
 
-	private: System::Windows::Forms::Button^ git_btn;
-	private: System::Windows::Forms::Button^ teg_btn;
+	protected: Point lastLocation;
+	private: ToolTip^ g;
+
+
 
 	private: bool exit_right = false;
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::PictureBox^ exit_btn;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::PictureBox^ place_order_btn;
+	private: System::Windows::Forms::PictureBox^ bug_report_btn;
+	private: System::Windows::Forms::PictureBox^ github_btn;
+	private: System::Windows::Forms::PictureBox^ tg_btn;
 
 
 
@@ -66,12 +71,18 @@ namespace solver {
 			   this->panel1_1 = (gcnew System::Windows::Forms::Panel());
 			   this->exit_btn = (gcnew System::Windows::Forms::PictureBox());
 			   this->name_prog1 = (gcnew System::Windows::Forms::Label());
-			   this->dis_btn = (gcnew System::Windows::Forms::Button());
-			   this->git_btn = (gcnew System::Windows::Forms::Button());
-			   this->teg_btn = (gcnew System::Windows::Forms::Button());
-			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->panel1 = (gcnew System::Windows::Forms::Panel());
+			   this->tg_btn = (gcnew System::Windows::Forms::PictureBox());
+			   this->github_btn = (gcnew System::Windows::Forms::PictureBox());
+			   this->bug_report_btn = (gcnew System::Windows::Forms::PictureBox());
+			   this->place_order_btn = (gcnew System::Windows::Forms::PictureBox());
 			   this->panel1_1->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->BeginInit();
+			   this->panel1->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tg_btn))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->github_btn))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bug_report_btn))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->place_order_btn))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // panel1_1
@@ -81,7 +92,7 @@ namespace solver {
 			   this->panel1_1->Controls->Add(this->name_prog1);
 			   this->panel1_1->Location = System::Drawing::Point(0, 0);
 			   this->panel1_1->Name = L"panel1_1";
-			   this->panel1_1->Size = System::Drawing::Size(200, 30);
+			   this->panel1_1->Size = System::Drawing::Size(282, 25);
 			   this->panel1_1->TabIndex = 0;
 			   this->panel1_1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseDown);
 			   this->panel1_1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseMove);
@@ -89,10 +100,11 @@ namespace solver {
 			   // 
 			   // exit_btn
 			   // 
+			   this->exit_btn->Dock = System::Windows::Forms::DockStyle::Right;
 			   this->exit_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"exit_btn.Image")));
-			   this->exit_btn->Location = System::Drawing::Point(170, 0);
+			   this->exit_btn->Location = System::Drawing::Point(257, 0);
 			   this->exit_btn->Name = L"exit_btn";
-			   this->exit_btn->Size = System::Drawing::Size(30, 30);
+			   this->exit_btn->Size = System::Drawing::Size(25, 25);
 			   this->exit_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->exit_btn->TabIndex = 0;
 			   this->exit_btn->TabStop = false;
@@ -102,15 +114,15 @@ namespace solver {
 			   // 
 			   // name_prog1
 			   // 
-			   this->name_prog1->AutoSize = true;
 			   this->name_prog1->BackColor = System::Drawing::Color::Black;
 			   this->name_prog1->Cursor = System::Windows::Forms::Cursors::Default;
+			   this->name_prog1->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->name_prog1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(204)));
 			   this->name_prog1->ForeColor = System::Drawing::Color::White;
-			   this->name_prog1->Location = System::Drawing::Point(0, 4);
+			   this->name_prog1->Location = System::Drawing::Point(0, 0);
 			   this->name_prog1->Name = L"name_prog1";
-			   this->name_prog1->Size = System::Drawing::Size(132, 22);
+			   this->name_prog1->Size = System::Drawing::Size(252, 25);
 			   this->name_prog1->TabIndex = 0;
 			   this->name_prog1->Text = L"О Разработчике:";
 			   this->name_prog1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -119,72 +131,76 @@ namespace solver {
 			   this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseMove);
 			   this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::panel1_1_MouseUp);
 			   // 
-			   // dis_btn
+			   // panel1
 			   // 
-			   this->dis_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
-			   this->dis_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->dis_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(204)));
-			   this->dis_btn->ForeColor = System::Drawing::Color::Black;
-			   this->dis_btn->Location = System::Drawing::Point(13, 35);
-			   this->dis_btn->Name = L"dis_btn";
-			   this->dis_btn->Size = System::Drawing::Size(176, 30);
-			   this->dis_btn->TabIndex = 10;
-			   this->dis_btn->TabStop = false;
-			   this->dis_btn->Text = L"Оформить заказ";
-			   this->dis_btn->UseCompatibleTextRendering = true;
-			   this->dis_btn->UseVisualStyleBackColor = false;
-			   this->dis_btn->Click += gcnew System::EventHandler(this, &developer::dis_btn_Click);
+			   this->panel1->Controls->Add(this->tg_btn);
+			   this->panel1->Controls->Add(this->github_btn);
+			   this->panel1->Controls->Add(this->bug_report_btn);
+			   this->panel1->Controls->Add(this->place_order_btn);
+			   this->panel1->Location = System::Drawing::Point(0, 25);
+			   this->panel1->Name = L"panel1";
+			   this->panel1->Size = System::Drawing::Size(282, 286);
+			   this->panel1->TabIndex = 1;
 			   // 
-			   // git_btn
+			   // tg_btn
 			   // 
-			   this->git_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
-			   this->git_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->git_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(204)));
-			   this->git_btn->ForeColor = System::Drawing::Color::Black;
-			   this->git_btn->Location = System::Drawing::Point(12, 105);
-			   this->git_btn->Name = L"git_btn";
-			   this->git_btn->Size = System::Drawing::Size(86, 30);
-			   this->git_btn->TabIndex = 12;
-			   this->git_btn->TabStop = false;
-			   this->git_btn->Text = L"GitHub";
-			   this->git_btn->UseCompatibleTextRendering = true;
-			   this->git_btn->UseVisualStyleBackColor = false;
-			   this->git_btn->Click += gcnew System::EventHandler(this, &developer::git_btn_Click);
+			   this->tg_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"tg_btn.Image")));
+			   this->tg_btn->Location = System::Drawing::Point(15, 209);
+			   this->tg_btn->Margin = System::Windows::Forms::Padding(15, 3, 15, 15);
+			   this->tg_btn->Name = L"tg_btn";
+			   this->tg_btn->Size = System::Drawing::Size(252, 75);
+			   this->tg_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->tg_btn->TabIndex = 0;
+			   this->tg_btn->TabStop = false;
+			   this->tg_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::tg_btn_MouseClick);
+			   this->tg_btn->MouseEnter += gcnew System::EventHandler(this, &developer::tg_btn_MouseEnter);
+			   this->tg_btn->MouseLeave += gcnew System::EventHandler(this, &developer::tg_btn_MouseLeave);
+			   this->tg_btn->MouseHover += gcnew System::EventHandler(this, &developer::tg_btn_MouseHover);
 			   // 
-			   // teg_btn
+			   // github_btn
 			   // 
-			   this->teg_btn->BackColor = System::Drawing::Color::MediumSpringGreen;
-			   this->teg_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->teg_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold));
-			   this->teg_btn->ForeColor = System::Drawing::Color::Black;
-			   this->teg_btn->Location = System::Drawing::Point(104, 105);
-			   this->teg_btn->Name = L"teg_btn";
-			   this->teg_btn->Size = System::Drawing::Size(86, 30);
-			   this->teg_btn->TabIndex = 13;
-			   this->teg_btn->TabStop = false;
-			   this->teg_btn->Text = L"Telegram";
-			   this->teg_btn->UseCompatibleTextRendering = true;
-			   this->teg_btn->UseVisualStyleBackColor = false;
-			   this->teg_btn->Click += gcnew System::EventHandler(this, &developer::teg_btn_Click);
+			   this->github_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"github_btn.Image")));
+			   this->github_btn->Location = System::Drawing::Point(15, 140);
+			   this->github_btn->Margin = System::Windows::Forms::Padding(15, 3, 15, 5);
+			   this->github_btn->Name = L"github_btn";
+			   this->github_btn->Size = System::Drawing::Size(252, 75);
+			   this->github_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->github_btn->TabIndex = 1;
+			   this->github_btn->TabStop = false;
+			   this->github_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::github_btn_MouseClick);
+			   this->github_btn->MouseEnter += gcnew System::EventHandler(this, &developer::github_btn_MouseEnter);
+			   this->github_btn->MouseLeave += gcnew System::EventHandler(this, &developer::github_btn_MouseLeave);
+			   this->github_btn->MouseHover += gcnew System::EventHandler(this, &developer::github_btn_MouseHover);
 			   // 
-			   // button1
+			   // bug_report_btn
 			   // 
-			   this->button1->BackColor = System::Drawing::Color::MediumSpringGreen;
-			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(204)));
-			   this->button1->ForeColor = System::Drawing::Color::Black;
-			   this->button1->Location = System::Drawing::Point(12, 70);
-			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(176, 30);
-			   this->button1->TabIndex = 14;
-			   this->button1->TabStop = false;
-			   this->button1->Text = L"Bug Report";
-			   this->button1->UseCompatibleTextRendering = true;
-			   this->button1->UseVisualStyleBackColor = false;
-			   this->button1->Click += gcnew System::EventHandler(this, &developer::button1_Click);
+			   this->bug_report_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bug_report_btn.Image")));
+			   this->bug_report_btn->Location = System::Drawing::Point(15, 71);
+			   this->bug_report_btn->Margin = System::Windows::Forms::Padding(15, 3, 15, 5);
+			   this->bug_report_btn->Name = L"bug_report_btn";
+			   this->bug_report_btn->Size = System::Drawing::Size(252, 75);
+			   this->bug_report_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->bug_report_btn->TabIndex = 2;
+			   this->bug_report_btn->TabStop = false;
+			   this->bug_report_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::bug_report_btn_MouseClick);
+			   this->bug_report_btn->MouseEnter += gcnew System::EventHandler(this, &developer::bug_report_btn_MouseEnter);
+			   this->bug_report_btn->MouseLeave += gcnew System::EventHandler(this, &developer::bug_report_btn_MouseLeave);
+			   this->bug_report_btn->MouseHover += gcnew System::EventHandler(this, &developer::bug_report_btn_MouseHover);
+			   // 
+			   // place_order_btn
+			   // 
+			   this->place_order_btn->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"place_order_btn.Image")));
+			   this->place_order_btn->Location = System::Drawing::Point(15, 2);
+			   this->place_order_btn->Margin = System::Windows::Forms::Padding(15, 3, 15, 5);
+			   this->place_order_btn->Name = L"place_order_btn";
+			   this->place_order_btn->Size = System::Drawing::Size(252, 75);
+			   this->place_order_btn->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->place_order_btn->TabIndex = 3;
+			   this->place_order_btn->TabStop = false;
+			   this->place_order_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &developer::place_order_btn_MouseClick);
+			   this->place_order_btn->MouseEnter += gcnew System::EventHandler(this, &developer::place_order_btn_MouseEnter);
+			   this->place_order_btn->MouseLeave += gcnew System::EventHandler(this, &developer::place_order_btn_MouseLeave);
+			   this->place_order_btn->MouseHover += gcnew System::EventHandler(this, &developer::place_order_btn_MouseHover);
 			   // 
 			   // developer
 			   // 
@@ -193,11 +209,8 @@ namespace solver {
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(145)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(145)));
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			   this->ClientSize = System::Drawing::Size(200, 142);
-			   this->Controls->Add(this->button1);
-			   this->Controls->Add(this->teg_btn);
-			   this->Controls->Add(this->git_btn);
-			   this->Controls->Add(this->dis_btn);
+			   this->ClientSize = System::Drawing::Size(282, 311);
+			   this->Controls->Add(this->panel1);
 			   this->Controls->Add(this->panel1_1);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -209,8 +222,12 @@ namespace solver {
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &developer::developer_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &developer::developer_Load);
 			   this->panel1_1->ResumeLayout(false);
-			   this->panel1_1->PerformLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn))->EndInit();
+			   this->panel1->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tg_btn))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->github_btn))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bug_report_btn))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->place_order_btn))->EndInit();
 			   this->ResumeLayout(false);
 
 		   }
@@ -262,6 +279,82 @@ namespace solver {
 			this->exit_right = true;
 			this->Close();
 		}
+	}
+	private: System::Void tg_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			(gcnew System::Diagnostics::Process())->Start("https://t.me/+VLJzjVRg8ElkZWYy");
+	}
+	private: System::Void tg_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		this->tg_btn->Size = System::Drawing::Size(246, 69);
+		this->tg_btn->Location = System::Drawing::Point(18, 213);
+	}
+	private: System::Void tg_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->tg_btn->Size = System::Drawing::Size(252, 75);
+		this->tg_btn->Location = System::Drawing::Point(15, 209);
+	}
+	private: System::Void tg_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::Info;
+			g->ToolTipTitle = "Подсказка";
+			g->SetToolTip(tg_btn, "Открыть Telegram разработчика");
+	}
+	private: System::Void github_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			(gcnew System::Diagnostics::Process())->Start("https://github.com/Lonewolf239");
+	}
+	private: System::Void github_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		this->github_btn->Size = System::Drawing::Size(246, 69);
+		this->github_btn->Location = System::Drawing::Point(18, 144);
+	}
+	private: System::Void github_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->github_btn->Size = System::Drawing::Size(252, 75);
+		this->github_btn->Location = System::Drawing::Point(15, 140);
+	}
+	private: System::Void github_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::Info;
+			g->ToolTipTitle = "Подсказка";
+			g->SetToolTip(github_btn, "Открыть GitHub разработчика");
+	}
+	private: System::Void bug_report_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_BugReportBOT");
+	}
+	private: System::Void bug_report_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		this->bug_report_btn->Size = System::Drawing::Size(246, 69);
+		this->bug_report_btn->Location = System::Drawing::Point(18, 75);
+	}
+	private: System::Void bug_report_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::Info;
+			g->ToolTipTitle = "Подсказка";
+			g->SetToolTip(bug_report_btn, "Сообщить об ошибках");
+	}
+	private: System::Void bug_report_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->bug_report_btn->Size = System::Drawing::Size(252, 75);
+		this->bug_report_btn->Location = System::Drawing::Point(15, 71);
+	}
+	private: System::Void place_order_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (e->Button == System::Windows::Forms::MouseButtons::Left)
+			(gcnew System::Diagnostics::Process())->Start("https://t.me/Lonewolf239_OrderBOT");
+	}
+	private: System::Void place_order_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		this->place_order_btn->Size = System::Drawing::Size(246, 69);
+		this->place_order_btn->Location = System::Drawing::Point(18, 6);
+	}
+	private: System::Void place_order_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		this->place_order_btn->Size = System::Drawing::Size(252, 75);
+		this->place_order_btn->Location = System::Drawing::Point(15, 2);
+	}
+	private: System::Void place_order_btn_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+		delete g;
+		g = gcnew ToolTip();
+		g->ToolTipIcon = ToolTipIcon::Info;
+			g->ToolTipTitle = "Подсказка";
+			g->SetToolTip(place_order_btn, "Оформить заказ");
 	}
 	};
 }
