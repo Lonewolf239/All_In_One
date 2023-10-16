@@ -1,4 +1,8 @@
 #include "hacking.h"
+#include <iostream>
+#include <Windows.h>
+
+bool Language3 = true;
 
 TCHAR username[UNLEN + 1];
 DWORD size = UNLEN + 1;
@@ -59,12 +63,12 @@ namespace solver {
 	protected: Point lastLocation;
 	private: System::Windows::Forms::Label^ number;
 	private: System::Windows::Forms::Panel^ panel2_2;
-
 	private: System::Windows::Forms::Panel^ panel3_2;
 
 	private: System::Windows::Forms::Label^ sing_txt;
 	private: System::Windows::Forms::Label^ conect_txt;
 	private: int sec = 0, sec1 = 0, num_did = 0, sexs = 0, n = 0, s = 0;
+		float secs = 0;
 	private: bool cycle = false;
 	private: bool done = false;
 	private: bool pas_done = false;
@@ -79,7 +83,7 @@ namespace solver {
 	private: System::Windows::Forms::Timer^ timer3_2;
 
 	private: System::Windows::Forms::Label^ pas_txt;
-	private: System::Windows::Forms::Label^ label1_2;
+
 
 	private: System::Windows::Forms::Button^ canc1;
 	private: System::Windows::Forms::Button^ canc2;
@@ -87,10 +91,14 @@ namespace solver {
 	private: System::Windows::Forms::Timer^ timer4_2;	private: System::Windows::Forms::Panel^ panel4_2;
 
 
-	private: System::Windows::Forms::Label^ label4_2;
 
-	private: System::Windows::Forms::Label^ label3;
+
+
 	private: System::Windows::Forms::Timer^ timer5_2;
+	private: System::Windows::Forms::Timer^ timer6_2;
+	private: System::Windows::Forms::PictureBox^ label4_2;
+	private: System::Windows::Forms::PictureBox^ label1_2;
+	private: System::Windows::Forms::Timer^ final_timer;
 
 	private: System::ComponentModel::IContainer^ components;
 
@@ -124,7 +132,6 @@ namespace solver {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label1_2 = (gcnew System::Windows::Forms::Label());
 			this->panel3_2 = (gcnew System::Windows::Forms::Panel());
 			this->pas_txt = (gcnew System::Windows::Forms::Label());
 			this->log_txt = (gcnew System::Windows::Forms::Label());
@@ -138,13 +145,17 @@ namespace solver {
 			this->label2_2 = (gcnew System::Windows::Forms::Label());
 			this->timer4_2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel4_2 = (gcnew System::Windows::Forms::Panel());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4_2 = (gcnew System::Windows::Forms::Label());
+			this->label4_2 = (gcnew System::Windows::Forms::PictureBox());
 			this->timer5_2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer6_2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label1_2 = (gcnew System::Windows::Forms::PictureBox());
+			this->final_timer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1_2->SuspendLayout();
 			this->panel2_2->SuspendLayout();
 			this->panel3_2->SuspendLayout();
 			this->panel4_2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->label4_2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->label1_2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1_2
@@ -337,19 +348,6 @@ namespace solver {
 			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
-			// label1_2
-			// 
-			this->label1_2->BackColor = System::Drawing::Color::Black;
-			this->label1_2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1_2.Image")));
-			this->label1_2->Location = System::Drawing::Point(0, 0);
-			this->label1_2->Name = L"label1_2";
-			this->label1_2->Size = System::Drawing::Size(390, 270);
-			this->label1_2->TabIndex = 2;
-			this->label1_2->Visible = false;
-			this->label1_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
-			this->label1_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
-			this->label1_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
-			// 
 			// panel3_2
 			// 
 			this->panel3_2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
@@ -438,7 +436,7 @@ namespace solver {
 			// 
 			// timer1_2
 			// 
-			this->timer1_2->Interval = 200;
+			this->timer1_2->Interval = 275;
 			this->timer1_2->Tick += gcnew System::EventHandler(this, &loading::timer1_Tick);
 			// 
 			// timer2_2
@@ -448,7 +446,7 @@ namespace solver {
 			// 
 			// timer3_2
 			// 
-			this->timer3_2->Interval = 200;
+			this->timer3_2->Interval = 275;
 			this->timer3_2->Tick += gcnew System::EventHandler(this, &loading::timer3_2_Tick);
 			// 
 			// canc1
@@ -486,16 +484,16 @@ namespace solver {
 			// 
 			// label2_2
 			// 
-			this->label2_2->AutoSize = true;
 			this->label2_2->Cursor = System::Windows::Forms::Cursors::Default;
 			this->label2_2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label2_2->ForeColor = System::Drawing::Color::White;
 			this->label2_2->Location = System::Drawing::Point(20, 0);
 			this->label2_2->Name = L"label2_2";
-			this->label2_2->Size = System::Drawing::Size(199, 16);
+			this->label2_2->Size = System::Drawing::Size(280, 20);
 			this->label2_2->TabIndex = 12;
 			this->label2_2->Text = L"Программа \"Всё В Одном\"";
+			this->label2_2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->label2_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
 			this->label2_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
 			this->label2_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
@@ -508,7 +506,6 @@ namespace solver {
 			// panel4_2
 			// 
 			this->panel4_2->BackColor = System::Drawing::Color::Black;
-			this->panel4_2->Controls->Add(this->label3);
 			this->panel4_2->Controls->Add(this->label4_2);
 			this->panel4_2->Controls->Add(this->label2_2);
 			this->panel4_2->Location = System::Drawing::Point(0, 0);
@@ -519,20 +516,15 @@ namespace solver {
 			this->panel4_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
 			this->panel4_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
 			// 
-			// label3
-			// 
-			this->label3->Location = System::Drawing::Point(350, 0);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(20, 20);
-			this->label3->TabIndex = 16;
-			// 
 			// label4_2
 			// 
 			this->label4_2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label4_2.Image")));
 			this->label4_2->Location = System::Drawing::Point(0, 0);
 			this->label4_2->Name = L"label4_2";
 			this->label4_2->Size = System::Drawing::Size(20, 20);
-			this->label4_2->TabIndex = 15;
+			this->label4_2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->label4_2->TabIndex = 5;
+			this->label4_2->TabStop = false;
 			this->label4_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
 			this->label4_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
 			this->label4_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
@@ -541,6 +533,30 @@ namespace solver {
 			// 
 			this->timer5_2->Interval = 1000;
 			this->timer5_2->Tick += gcnew System::EventHandler(this, &loading::timer5_2_Tick);
+			// 
+			// timer6_2
+			// 
+			this->timer6_2->Interval = 275;
+			this->timer6_2->Tick += gcnew System::EventHandler(this, &loading::timer6_2_Tick);
+			// 
+			// label1_2
+			// 
+			this->label1_2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1_2.Image")));
+			this->label1_2->Location = System::Drawing::Point(0, 0);
+			this->label1_2->Name = L"label1_2";
+			this->label1_2->Size = System::Drawing::Size(390, 270);
+			this->label1_2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->label1_2->TabIndex = 0;
+			this->label1_2->TabStop = false;
+			this->label1_2->Visible = false;
+			this->label1_2->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseDown);
+			this->label1_2->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseMove);
+			this->label1_2->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &loading::label2_2_MouseUp);
+			// 
+			// final_timer
+			// 
+			this->final_timer->Interval = 250;
+			this->final_timer->Tick += gcnew System::EventHandler(this, &loading::final_timer_Tick);
 			// 
 			// loading
 			// 
@@ -571,7 +587,8 @@ namespace solver {
 			this->panel3_2->ResumeLayout(false);
 			this->panel3_2->PerformLayout();
 			this->panel4_2->ResumeLayout(false);
-			this->panel4_2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->label4_2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->label1_2))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -590,7 +607,6 @@ namespace solver {
 			this->button_resh->Enabled = false;
 			this->button_zvd->Enabled = false;
 			this->tim1 = true;
-			this->timer2_2->Start();
 			this->canc_did = true;
 		}
 	}
@@ -762,14 +778,16 @@ namespace solver {
 					this->button_resh->Enabled = false;
 					this->button_zvd->Enabled = false;
 					this->tim1 = true;
-					this->timer2_2->Start();
 					this->canc_did = true;
 					SetCursorPos(p.x, p.y);
 				}
 			}
 			PlaySound(MAKEINTRESOURCE(1), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 			BlockInput(false);
+		}
+		else if (this->sec == 12) {
 			this->timer1_2->Stop();
+			this->timer2_2->Start();
 		}
 		this->sec++;
 	}
@@ -785,8 +803,12 @@ namespace solver {
 			this->sing_txt->Text += ".";
 		else if (sec1 == 2 && !this->cycle)
 			this->sing_txt->Text += ".";
-		else if (sec1 == 3 && !this->cycle)
-			this->sing_txt->Text = "Набор номера.";
+		else if (sec1 == 3 && !this->cycle) {
+			if (!Language3)
+				this->sing_txt->Text = "Набор номера.";
+			else
+				this->sing_txt->Text = "Dialing a number.";
+		}
 		else if (this->num_did == 6 && !this->cycle) {
 			this->sing_txt->Text = "Done!";
 			this->conect_txt->Show();
@@ -798,15 +820,19 @@ namespace solver {
 			this->conect_txt->Text += ".";
 		else if (sec1 == 2 && this->cycle)
 			this->conect_txt->Text += ".";
-		else if (sec1 == 3 && this->cycle)
-			this->conect_txt->Text = "Соединение.";
+		else if (sec1 == 3 && this->cycle) {
+			if (!Language3)
+				this->conect_txt->Text = "Соединение.";
+			else
+				this->conect_txt->Text = "Connection.";
+		}
 		else if (this->num_did == 6 && this->cycle) {
 			this->conect_txt->Text = "Done!";
 			this->log_txt->Show();
 			this->timer2_2->Stop();
 			PlaySound(nullptr, nullptr, 0);
 			PlaySound(MAKEINTRESOURCE(9), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
-			this->timer3_2->Start();
+			this->timer6_2->Start();
 		}
 		else if (sec1 == 4 && this->num_did != 6) {
 			this->sec1 = 0;
@@ -815,7 +841,7 @@ namespace solver {
 		this->sec1++;
 	}
 	private: System::Void timer3_2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (this->sexs < size && !this->pas_done) {
+		if (this->sexs < static_cast<decltype(this->sexs)>(size) - 1 && !this->pas_done) {
 			this->log_txt->Text += username[sexs];
 			PlaySound(MAKEINTRESOURCE(10), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 		}
@@ -877,11 +903,13 @@ namespace solver {
 	private: System::Void timer4_2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->s == 1) {
 			PlaySound(nullptr, nullptr, 0);
-			_form1 = gcnew hacking;
-			_form1->Show();
+			PlaySound(MAKEINTRESOURCE(13), GetModuleHandle(NULL), SND_RESOURCE | SND_LOOP | SND_ASYNC);
+			this->timer4_2->Stop();
+			this->final_timer->Start();
+			this->Hide();
+			this->ClientSize = System::Drawing::Size(390, 271);
 			this->now_loading = false;
 			this->ShowInTaskbar = false;
-			loading::Hide();
 		}
 		this->s++;
 	}
@@ -889,7 +917,24 @@ namespace solver {
 		this->timer5_2->Stop();
 		this->timer3_2->Start();
 	}
+	private: System::Void timer6_2_Tick(System::Object^ sender, System::EventArgs^ e) {
+		this->timer6_2->Stop();
+		this->timer3_2->Start();
+	}
 	private: System::Void loading_Load(System::Object^ sender, System::EventArgs^ e) {
+		LCID sysLocale = GetSystemDefaultLCID();
+		char locale[3];
+		GetLocaleInfoA(sysLocale, LOCALE_SISO639LANGNAME, locale, sizeof(locale));
+		if (std::string(locale) == "ru" || std::string(locale) == "uk" || std::string(locale) == "be" || std::string(locale) == "kk" || std::string(locale) == "ky")
+			Language3 = false;
+		else {
+			this->Text = L"Program \"All in One\"";
+			this->label2_2->Text = L"Program \"All in One\"";
+			this->canc1->Text = L"Cancel";
+			this->canc2->Text = L"Cancel";
+			this->conect_txt->Text = L"Connection.";
+			this->sing_txt->Text = L"Dialing a number.";
+		}
 		if (!this->tim) {
 			this->screenW = GetSystemMetrics(SM_CYSCREEN);
 			this->screenH = GetSystemMetrics(SM_CXSCREEN);
@@ -992,7 +1037,10 @@ namespace solver {
 	}
 	private: System::Void loading_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		if (this->now_loading) {
-			MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (!Language3)
+				MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			else
+				MessageBox::Show("Please do not close the program, do not turn off the Internet and do not turn off the PC until the program is finished!\nThanks for your understanding!", "You should not do this", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			e->Cancel = true;
 		}
 	}
@@ -1017,5 +1065,14 @@ namespace solver {
 		this->label4_2->Cursor = System::Windows::Forms::Cursors::Default;
 		this->panel4_2->Cursor = System::Windows::Forms::Cursors::Default;
 	}
-	};
+	private: System::Void final_timer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (this->secs == 14.75) {
+			this->Hide();
+			_form1 = gcnew hacking;
+			_form1->Show();
+		}
+		this->secs += 0.25;
+	}
+
+};
 }

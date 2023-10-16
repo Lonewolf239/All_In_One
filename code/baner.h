@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <Windows.h>
 
 namespace solver {
 
@@ -64,15 +66,15 @@ namespace solver {
 			// 
 			// label1
 			// 
-			this->label1->AutoSize = true;
+			this->label1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label1->Location = System::Drawing::Point(0, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(428, 55);
+			this->label1->Size = System::Drawing::Size(435, 55);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Загрузка баннера";
-			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->label1->UseWaitCursor = true;
 			// 
 			// timer1
@@ -82,6 +84,7 @@ namespace solver {
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Right;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(419, 0);
 			this->pictureBox1->Name = L"pictureBox1";
@@ -113,18 +116,25 @@ namespace solver {
 			this->Click += gcnew System::EventHandler(this, &baner::baner_Click);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void baner_Load(System::Object^ sender, System::EventArgs^ e) {
+		LCID sysLocale = GetSystemDefaultLCID();
+		char locale[3];
+		GetLocaleInfoA(sysLocale, LOCALE_SISO639LANGNAME, locale, sizeof(locale));
+		if (!(std::string(locale) == "ru" || std::string(locale) == "uk" || std::string(locale) == "be" || std::string(locale) == "kk" || std::string(locale) == "ky")) {
+			this->ClientSize = System::Drawing::Size(420, 55);
+			this->label1->Text = L"Loading banner";
+		}
 		this->timer1->Start();
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (this->loading && stat == 46) {
 			this->label1->Hide();
 			this->pictureBox1->Hide();
-			this->ClientSize = System::Drawing::Size(1920, 125);
+			int screenW = GetSystemMetrics(SM_CXSCREEN);
+			this->ClientSize = System::Drawing::Size(screenW, 125);
 			this->timer1->Stop();
 		}
 		this->stat++;

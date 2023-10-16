@@ -61,8 +61,8 @@ IDI_ICON1               ICON                    "icon1.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,6,0
- PRODUCTVERSION 1,0,6,0
+ FILEVERSION 1,0,7,0
+ PRODUCTVERSION 1,0,7,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -79,12 +79,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Lonewolf239"
             VALUE "FileDescription", "Программа ""Всё В Одном"""
-            VALUE "FileVersion", "1.0.6"
+            VALUE "FileVersion", "1.0.7"
             VALUE "InternalName", "Программа ""Всё В Одном"""
-            VALUE "LegalCopyright", "Copyright (C) 2023"
+            VALUE "LegalCopyright", "Lonewolf239 (C) 2023"
             VALUE "OriginalFilename", "Программа ""Всё В Одном"""
             VALUE "ProductName", "Всё В Одном"
-            VALUE "ProductVersion", "1.0.6"
+            VALUE "ProductVersion", "1.0.7"
         END
     END
     BLOCK "VarFileInfo"

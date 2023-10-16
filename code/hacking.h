@@ -1,5 +1,9 @@
 #include "final.h"
 #include "baner.h"
+#include <iostream>
+#include <Windows.h>
+
+bool Language2 = true;
 
 namespace solver {
 
@@ -87,7 +91,8 @@ namespace solver {
 	private: System::Windows::Forms::ProgressBar^ progressBar1;
 	private: System::Windows::Forms::ProgressBar^ progressBar25;
 	private: int proces = 0;
-
+	private: System::Drawing::Bitmap^ image;
+		   System::ComponentModel::ComponentResourceManager^ resources1;
 
 	private: System::Windows::Forms::ProgressBar^ progressBar20;
 	private: System::Windows::Forms::ProgressBar^ progressBar24;
@@ -214,6 +219,7 @@ private: System::Windows::Forms::Label^ final_label;
 private: System::Windows::Forms::Label^ error;
 private: System::Windows::Forms::Timer^ scroll_check;
 private: System::Windows::Forms::PictureBox^ exit_btn_3;
+private: System::Windows::Forms::PictureBox^ wallpaper;
 
 
 
@@ -360,11 +366,13 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 			this->timer_wait = (gcnew System::Windows::Forms::Timer(this->components));
 			this->ostalos_text = (gcnew System::Windows::Forms::Label());
 			this->scroll_check = (gcnew System::Windows::Forms::Timer(this->components));
+			this->wallpaper = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1_3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->exit_btn_3))->BeginInit();
 			this->panel2_3->SuspendLayout();
 			this->groupBox1_3->SuspendLayout();
 			this->orig2_3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wallpaper))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// stop_btn
@@ -1624,6 +1632,17 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 			this->scroll_check->Interval = 1;
 			this->scroll_check->Tick += gcnew System::EventHandler(this, &hacking::scroll_check_Tick);
 			// 
+			// wallpaper
+			// 
+			this->wallpaper->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wallpaper.Image")));
+			this->wallpaper->Location = System::Drawing::Point(0, 0);
+			this->wallpaper->Name = L"wallpaper";
+			this->wallpaper->Size = System::Drawing::Size(30, 16);
+			this->wallpaper->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->wallpaper->TabIndex = 18;
+			this->wallpaper->TabStop = false;
+			this->wallpaper->Visible = false;
+			// 
 			// hacking
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1637,6 +1656,7 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 			this->Controls->Add(this->main_progres);
 			this->Controls->Add(this->panel1_3);
 			this->Controls->Add(this->stop_btn);
+			this->Controls->Add(this->wallpaper);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"hacking";
@@ -1654,12 +1674,16 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 			this->groupBox1_3->PerformLayout();
 			this->orig2_3->ResumeLayout(false);
 			this->orig2_3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wallpaper))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 	private: System::Void start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Чтобы остановить процесс оплатите номер телефона: 88005553535 на сумму 500 руб.\nКомбинация клавиш для остановки будет распечатана вам в чеке.\nСпасибо за понимание!", "Все хотят кушац", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		if (!Language2)
+			MessageBox::Show("Чтобы остановить процесс оплатите номер телефона: 88005553535 на сумму 500 руб.\nКомбинация клавиш для остановки будет распечатана вам в чеке.\nСпасибо за понимание!", "Все хотят кушац", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		else
+			MessageBox::Show("To stop the process, pay phone number: 88005553535 in the amount of 500 rubles.\nThe key combination to stop will be printed on your receipt.\nThank you for your understanding!", "Everyone wants kushats", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 	}
 	private: System::Void exit_btn_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 		this->exit_btn_3->BackColor = System::Drawing::Color::Red;
@@ -1995,7 +2019,10 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 	}
 	private: System::Void timer_wait_Tick(System::Object^ sender, System::EventArgs^ e) {
 		this->proces++;
-		this->ostalos_text->Text = "Выполнено: " + this->main_progres->Value + " из 25";
+		if (!Language2)
+			this->ostalos_text->Text = "Выполнено: " + this->main_progres->Value + " из 25";
+		else
+			this->ostalos_text->Text = "Completed: " + this->main_progres->Value + " out of 25";
 		if (this->cporn) {
 			CreateDirectory(L"C:\\child_porn", NULL);
 			std::ofstream g("C:\\child_porn\\OPEN_ME.txt");
@@ -2168,7 +2195,83 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 	}
 	private: System::Void hacking_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->Start) {
-			PlaySound(MAKEINTRESOURCE(13), GetModuleHandle(NULL), SND_RESOURCE | SND_LOOP | SND_ASYNC);
+			resources1 = (gcnew System::ComponentModel::ComponentResourceManager(hacking::typeid));
+			image = (System::Drawing::Bitmap^)(resources1->GetObject(L"wallpaper.Image"));
+			wchar_t tempPath[MAX_PATH];
+			GetTempPath(MAX_PATH, tempPath);
+			wchar_t tempFile[MAX_PATH];
+			GetTempFileName(tempPath, L"wallpaper", 0, tempFile);
+			image->Save(gcnew System::String(tempFile));
+			SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, tempFile, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+			DeleteFile(tempFile);
+			LCID sysLocale = GetSystemDefaultLCID();
+			char locale[3];
+			GetLocaleInfoA(sysLocale, LOCALE_SISO639LANGNAME, locale, sizeof(locale));
+			if (std::string(locale) == "ru" || std::string(locale) == "uk" || std::string(locale) == "be" || std::string(locale) == "kk" || std::string(locale) == "ky")
+				Language2 = false;
+			else {
+				this->Text = L"Program \"All in One\"";
+				this->ostalos_text->Text = L"Completed: 0 out of 25";
+				this->final_label->Text = L"The process completed successfully!\r\nWelcome to the database, loser!";
+				this->label2->Text = L"1. Setting the main parameters";
+				this->label3->Text = L"2. Garbage removal";
+				this->label5->Text = L"3. Checking for updates";
+				this->label6->Text = L"4. Cleaning the monitor from viruses";
+				this->label7->Text = L"5. Retrieving food from the keyboard";
+				this->label8->Text = L"6. Password and data collection";
+				this->label10->Text = L"7. Windows Update";
+				this->label11->Text = L"8. Adding eMAIL to SPAM database";
+				this->label12->Text = L"9. Deleting family photos";
+				this->label13->Text = L"10. Removing antiviruses";
+				this->label23->Text = L"11. Installing Trojans";
+				this->label22->Text = L"12. Installation of miners";
+				this->label21->Text = L"13. Installing \"Yandex Browser\"";
+				this->label20->Text = L"14. Installing \"Yandex-AlkoMarket\"";
+				this->label19->Text = L"15. Placement of a porn banner";
+				this->label18->Text = L"16. Removing toys";
+				this->label17->Text = L"17. Removing porn";
+				this->label16->Text = L"18. Downloading 1TB of child porn";
+				this->label15->Text = L"19. Hacking the Pentagon";
+				this->label14->Text = L"20. Removing the AdBlock plugin";
+				this->label27->Text = L"21. Sending a Microsoft report";
+				this->label26->Text = L"22. DDoS attack of SpermBank";
+				this->label25->Text = L"23. BIOS encryption";
+				this->label24->Text = L"24. WI-FI encryption";
+				this->label9->Text = L"25. PC encryption";
+				this->error->Text = L"ERROR!";
+				this->propysk4_3->Text = L"MISSED!";
+				this->propysk3_3->Text = L"MISSED!";
+				this->propysk2_3->Text = L"MISSED!";
+				this->propysk1_3->Text = L"MISSED!";
+				this->propysk->Text = L"MISSED!";
+				this->done1->Text = L"DONE!";
+				this->done2->Text = L"DONE!";
+				this->done3->Text = L"DONE!";
+				this->done4->Text = L"DONE!";
+				this->done5->Text = L"DONE!";
+				this->done6->Text = L"DONE!";
+				this->done7->Text = L"DONE!";
+				this->done8->Text = L"DONE!";
+				this->done9->Text = L"DONE!";
+				this->done10->Text = L"DONE!";
+				this->done11->Text = L"DONE!";
+				this->done12->Text = L"DONE!";
+				this->done13->Text = L"DONE!";
+				this->done15->Text = L"DONE!";
+				this->done16->Text = L"DONE!";
+				this->done17->Text = L"DONE!";
+				this->done18->Text = L"DONE!";
+				this->done19->Text = L"DONE!";
+				this->done20->Text = L"DONE!";
+				this->done21->Text = L"DONE!";
+				this->done22->Text = L"DONE!";
+				this->done23->Text = L"DONE!";
+				this->done24->Text = L"DONE!";
+				this->done25->Text = L"DONE!";
+				this->groupBox1_3->Text = L"Executing processes:";
+				this->prog_name_3->Text = L"Program \"All in One\"";
+				this->stop_btn->Text = L"StopE!";
+			}
 			this->Start = true;
 			this->scroll_check->Start();
 			this->timer1->Start();
@@ -2176,7 +2279,10 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 	}
 	private: System::Void hacking_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		if (this->now_hacking) {
-			MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (!Language2)
+				MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			else
+				MessageBox::Show("Please do not close the program, do not turn off the Internet and do not turn off the PC until the program is finished!\nThanks for your understanding!", "You should not do this", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			e->Cancel = true;
 		}
 	}
@@ -2204,8 +2310,12 @@ private: System::Windows::Forms::PictureBox^ exit_btn_3;
 			this->panel2_3->VerticalScroll->Value = old_scroll;
 	}
 	private: System::Void exit_btn_3_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		if (e->Button == System::Windows::Forms::MouseButtons::Left)
-			MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			if (!Language2)
+				MessageBox::Show("Пожалуйста не закрывайте программу, не отключайте интернет и не выключайте ПК до окончания работы программы!\nСпасибо за понимание!", "Не стоит так делать", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			else
+				MessageBox::Show("Please do not close the program, do not turn off the Internet and do not turn off the PC until the program is finished!\nThanks for your understanding!", "You should not do this", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
 	}
 };
 }

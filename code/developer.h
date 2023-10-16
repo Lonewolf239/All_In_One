@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+#include <Windows.h>
+
+bool Language1 = true;
 
 namespace solver {
 
@@ -251,6 +255,15 @@ namespace solver {
 			PlaySound(MAKEINTRESOURCE(16), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 	}
 	private: System::Void developer_Load(System::Object^ sender, System::EventArgs^ e) {
+		LCID sysLocale = GetSystemDefaultLCID();
+		char locale[3];
+		GetLocaleInfoA(sysLocale, LOCALE_SISO639LANGNAME, locale, sizeof(locale));
+		if (std::string(locale) == "ru" || std::string(locale) == "uk" || std::string(locale) == "be" || std::string(locale) == "kk" || std::string(locale) == "ky")
+			Language1 = false;
+		else {
+			this->Text = L"Program \"All in One\"";
+			this->name_prog1->Text = L"About the Developer:";
+		}
 		PlaySound(MAKEINTRESOURCE(15), GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
 	}
 	private: System::Void panel1_1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
@@ -296,8 +309,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::Info;
+		if (!Language1) {
 			g->ToolTipTitle = "Подсказка";
 			g->SetToolTip(tg_btn, "Открыть Telegram разработчика");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(tg_btn, "Open developer's Telegram");
+		}
 	}
 	private: System::Void github_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
@@ -315,8 +334,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::Info;
+		if (!Language1) {
 			g->ToolTipTitle = "Подсказка";
 			g->SetToolTip(github_btn, "Открыть GitHub разработчика");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(github_btn, "Open GitHub developer");
+		}
 	}
 	private: System::Void bug_report_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
@@ -330,8 +355,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::Info;
+		if (!Language1) {
 			g->ToolTipTitle = "Подсказка";
 			g->SetToolTip(bug_report_btn, "Сообщить об ошибках");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(bug_report_btn, "Report bugs");
+		}
 	}
 	private: System::Void bug_report_btn_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 		this->bug_report_btn->Size = System::Drawing::Size(252, 75);
@@ -353,8 +384,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::Info;
+		if (!Language1) {
 			g->ToolTipTitle = "Подсказка";
 			g->SetToolTip(place_order_btn, "Оформить заказ");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(place_order_btn, "Place an order");
+		}
 	}
 	};
 }

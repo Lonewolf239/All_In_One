@@ -1,6 +1,9 @@
 #include "loading.h"
 #include "developer.h"
-#include <windows.h>
+#include <iostream>
+#include <Windows.h>
+
+bool Language = true;
 
 namespace solver {
 
@@ -42,14 +45,13 @@ namespace solver {
 	private: System::Windows::Forms::Label^ orig_icon1;
 	private: ToolTip^ g;
 
+	private: loading^ _form;
 
 
 	private: System::Windows::Forms::Panel^ orig2;
 	private: System::Windows::Forms::Label^ orig1;
 	private: System::Windows::Forms::Label^ l100_1;
 
-
-	private: loading^ _form;
 	private: developer^ _form1;
 	private: System::Windows::Forms::Label^ icon_prog1;
 	private: System::Windows::Forms::GroupBox^ groupBox1_1;
@@ -181,7 +183,7 @@ namespace solver {
 			this->name_prog1->Name = L"name_prog1";
 			this->name_prog1->Size = System::Drawing::Size(436, 29);
 			this->name_prog1->TabIndex = 0;
-			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.6.1";
+			this->name_prog1->Text = L"Программа \"Всё В Одном\" v1.0.7";
 			this->name_prog1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseDown);
 			this->name_prog1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseMove);
 			this->name_prog1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &main::panel1_1_MouseUp);
@@ -410,13 +412,17 @@ namespace solver {
 			RegSetValueEx(hKey, valueName.c_str(), 0, REG_DWORD, (BYTE*)&newValue, sizeof(newValue));
 			RegCloseKey(hKey);
 		}
-		_form = gcnew loading;
+		_form = gcnew loading();
 		this->Location = this->first_location;
 		_form->Show();
+		this->_form->ClientSizeChanged += gcnew System::EventHandler(this, &main::loading_ClientSizeChanged);
 		if (_form1)
 			_form1->Close();
 		this->ShowInTaskbar = false;
 		this->Enabled = false;
+	}
+	private: System::Void loading_ClientSizeChanged(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		propysk1 = !propysk1;
@@ -434,8 +440,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::Info;
-		g->ToolTipTitle = "Подсказка";
-		g->SetToolTip(quest_btn, "Информация о разработчике");
+		if (!Language) {
+			g->ToolTipTitle = "Подсказка";
+			g->SetToolTip(quest_btn, "Информация о разработчике");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(quest_btn, "Developer information");
+		}
 	}
 	private: System::Void panel1_1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left)
@@ -457,6 +469,25 @@ namespace solver {
 		this->panel1_1->Cursor = System::Windows::Forms::Cursors::Default;
 	}
 	private: System::Void main_Load(System::Object^ sender, System::EventArgs^ e) {
+		LCID sysLocale = GetSystemDefaultLCID();
+		char locale[3];
+		GetLocaleInfoA(sysLocale, LOCALE_SISO639LANGNAME, locale, sizeof(locale));
+		if (std::string(locale) == "ru" || std::string(locale) == "uk" || std::string(locale) == "be" || std::string(locale) == "kk" || std::string(locale) == "ky")
+			Language = false;
+		else {
+			this->Text = L"Program \"All in One\"";
+			this->groupBox1_1->Text = L"Settings:";
+			this->start_btn1->Text = L"Start";
+			this->checkBox4->Text = L"Update Windows";
+			this->checkBox3->Text = L"Clean your PC from junk";
+			this->checkBox2->Text = L"Send report to Microsoft";
+			this->checkBox1->Text = L"Check for updates";
+			this->welcum_txt->Text = L"Is your PC glitching\? Low memory\?\r\nDid your monitor break\? Are you suffering from heartburn\?\r\nDid your keyboard gouge\?"
+				L"\r\nSpilled beer on the system unit\?\r\nThe \"All in One\" program will fix everything!\r\n";
+			this->welcum_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->name_prog1->Text = L"Program \"All in One\" v1.0.7";
+		}
 		this->first_location = this->Location;
 	}
 	private: System::Void exit_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
@@ -494,8 +525,14 @@ namespace solver {
 		delete g;
 		g = gcnew ToolTip();
 		g->ToolTipIcon = ToolTipIcon::None;
-		g->ToolTipTitle = "Совет";
-		g->SetToolTip(start_btn1, "Мне тоже в первый раз было страшно...\nНе ссы, жми кнопку!");
+		if (!Language) {
+			g->ToolTipTitle = "Совет";
+			g->SetToolTip(start_btn1, "Мне тоже в первый раз было страшно...\nНе ссы, жми кнопку!");
+		}
+		else {
+			g->ToolTipTitle = "Tip";
+			g->SetToolTip(start_btn1, "I was scared the first time too...\nDon't piss, press the button!");
+		}
 	}
 };
 }
